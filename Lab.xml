@@ -1,0 +1,536 @@
+<mujoco model="laboratory_complex">
+  <compiler angle="degree" coordinate="local" inertiafromgeom="true"/>
+
+  <option timestep="0.005" integrator="RK4">
+    <flag warmstart="enable"/>
+  </option>
+
+  <visual>
+    <headlight ambient="0.5 0.5 0.5" diffuse="0.8 0.8 0.8" specular="0.3 0.3 0.3"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+    <quality shadowsize="2048"/>
+    <map stiffness="700" shadowscale="0.5" fogstart="10" fogend="15"/>
+  </visual>
+
+  <asset>
+    <texture name="floor_tile" type="2d" builtin="checker" rgb1="0.8 0.8 0.8" rgb2="0.7 0.7 0.7" width="512" height="512"/>
+    <material name="floor_mat" texture="floor_tile" reflectance="0.1"/>
+    <material name="wall_mat" rgba="0.9 0.9 0.85 1" reflectance="0.05"/>
+    <material name="corridor_mat" rgba="0.85 0.85 0.85 1"/>
+    <material name="door_mat" rgba="0.6 0.4 0.3 1"/>
+    <material name="physics_accent" rgba="0.6 0.7 0.9 1"/>
+    <material name="chemistry_accent" rgba="0.9 0.7 0.6 1"/>
+    <material name="biology_accent" rgba="0.7 0.9 0.7 1"/>
+    <material name="fume_hood_mat" rgba="0.5 0.5 0.5 1"/>
+    <material name="granite_mat" rgba="0.3 0.3 0.3 1" reflectance="0.15"/>
+    <material name="sink_mat" rgba="0.4 0.5 0.6 1"/>
+    <material name="organic_zone_mat" rgba="0.85 0.7 0.6 1"/>
+    <material name="inorganic_zone_mat" rgba="0.6 0.75 0.85 1"/>
+    <material name="fume_hood_frame" rgba="0.35 0.35 0.35 1"/>
+    <material name="fume_hood_glass" rgba="0.6 0.7 0.9 0.3" reflectance="0.3"/>
+    <material name="corrosion_shelf" rgba="0.4 0.4 0.45 1"/>
+  </asset>
+
+  <worldbody>
+    <light directional="true" pos="0 0 10" dir="0 0 -1" diffuse="0.8 0.8 0.8" specular="0.2 0.2 0.2"/>
+    <light directional="true" pos="5 10 8" dir="-1 -1 -1" diffuse="0.5 0.5 0.5"/>
+
+    <!-- ========== CORRIDOR: 2.5m(W) x 18m(L)（走廊：2.5米×18米） ========== -->
+    <!-- Position: x=-1.25 to 1.25, y=0 to 18（位置：x=-1.25到1.25，y=0到18） -->
+
+    <!-- Corridor floor（走廊地面） -->
+    <geom name="corridor_floor" type="box" pos="0 9 0" size="1.25 9 0.1" material="corridor_mat" contype="1" conaffinity="1"/>
+
+    <!-- Corridor walls（走廊墙壁） -->
+    <geom name="corridor_wall_south" type="box" pos="0 0 1.6" size="1.25 0.1 1.6" material="wall_mat" contype="1" conaffinity="1"/>
+    <geom name="corridor_wall_north" type="box" pos="0 18 1.6" size="1.25 0.1 1.6" material="wall_mat" contype="1" conaffinity="1"/>
+
+    <!-- ========== PHYSICS LAB: 6m(W) x 8m(D) x 3.2m(H) - LEFT SIDE（物理实验室：左侧） ========== -->
+    <!-- Position: x=-7.25 to -1.25, y=5 to 13（位置：x=-7.25到-1.25，y=5到13） -->
+
+    <!-- Floor（地面） -->
+    <geom name="physics_floor" type="box" pos="-4.25 9 0" size="3 4 0.1" material="floor_mat" rgba="0.6 0.7 0.9 0.3" contype="1" conaffinity="1"/>
+
+    <!-- Walls with door opening at corridor side（墙壁-走廊侧有门） -->
+    <geom name="physics_wall_north" type="box" pos="-4.25 13 1.6" size="3 0.1 1.6" material="wall_mat" contype="1" conaffinity="1"/>
+    <geom name="physics_wall_south" type="box" pos="-4.25 5 1.6" size="3 0.1 1.6" material="wall_mat" contype="1" conaffinity="1"/>
+    <geom name="physics_wall_west" type="box" pos="-7.25 9 1.6" size="0.1 4 1.6" material="wall_mat" contype="1" conaffinity="1"/>
+
+    <!-- East wall split for 1.2m opening at center（东墙分开，中心留1.2米门） -->
+    <geom name="physics_wall_east_1" type="box" pos="-1.25 4.15 1.6" size="0.1 4.25 1.6" material="wall_mat" contype="1" conaffinity="1"/>
+    <geom name="physics_wall_east_2" type="box" pos="-1.25 13.85 1.6" size="0.1 4.25 1.6" material="wall_mat" contype="1" conaffinity="1"/>
+
+    <!-- Room label marker (visual only, no collision)（房间标记：仅视觉，无碰撞） -->
+    <geom name="physics_marker" type="box" pos="-4.25 9 0.2" size="0.5 0.3 0.05" rgba="0.6 0.7 0.9 1" contype="0" conaffinity="0"/>
+
+    <!-- Physics lab equipment（物理实验室设备） -->
+
+    <!-- Main experiment table: 3m×1.2m×0.8m, centered, longitudinal placement（主实验台：3m×1.2m×0.8m） -->
+    <body name="physics_main_table_body" pos="-4.25 9 0.4">
+        <geom name="physics_main_table" type="box" pos="0 0 0" size="0.6 1.5 0.4" rgba="0.4 0.4 0.4 1" contype="1" conaffinity="1"/>
+        <geom name="physics_main_table_top" type="box" pos="0 0 0.42" size="0.61 1.51 0.02" rgba="0.3 0.3 0.3 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Core equipment on main table（主表上的核心设备） -->
+    <!-- Oscilloscope（示波器） -->
+    <body name="oscilloscope_body" pos="-4.25 7.8 0.94">
+        <freejoint/>
+        <geom name="oscilloscope" type="box" pos="0 0 0" size="0.15 0.2 0.1" rgba="0.2 0.2 0.2 1" contype="1" conaffinity="1"/>
+        <geom name="oscilloscope_screen" type="box" pos="0 -0.05 0.05" size="0.12 0.01 0.08" rgba="0.1 0.3 0.2 1" contype="0" conaffinity="0"/>
+    </body>
+
+    <!-- Precision mechanics platform（精密力学平台） -->
+    <body name="mechanics_platform_body" pos="-4.5 9 0.92">
+        <freejoint/>
+        <geom name="mechanics_platform" type="box" pos="0 0 0" size="0.25 0.25 0.08" rgba="0.5 0.5 0.5 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Resistor box / power supply（电源供应器/电阻箱） -->
+    <body name="power_supply_body" pos="-3.9 9 0.92">
+        <freejoint/>
+        <geom name="power_supply" type="box" pos="0 0 0" size="0.12 0.15 0.08" rgba="0.3 0.3 0.35 1" contype="1" conaffinity="1"/>
+        <geom name="power_display" type="box" pos="0 -0.12 0.05" size="0.08 0.01 0.04" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0"/>
+    </body>
+
+    <!-- Laser source（激光源） -->
+    <body name="laser_source_body" pos="-4.25 10.2 0.88">
+        <freejoint/>
+        <geom name="laser_mount" type="box" pos="0 0 0" size="0.08 0.08 0.04" rgba="0.3 0.3 0.3 1" contype="1" conaffinity="1"/>
+        <geom name="laser_source" type="cylinder" pos="0 0 0.08" size="0.05 0.08" rgba="0.6 0.1 0.1 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Data acquisition sensors（数据采集传感器） -->
+    <body name="sensor_1_body" pos="-4.6 8.2 0.90">
+        <freejoint/>
+        <geom name="sensor_1" type="cylinder" pos="0 0 0" size="0.03 0.06" rgba="0.2 0.4 0.6 1" contype="1" conaffinity="1"/>
+    </body>
+    <body name="sensor_2_body" pos="-3.9 8.2 0.90">
+        <freejoint/>
+        <geom name="sensor_2" type="cylinder" pos="0 0 0" size="0.03 0.06" rgba="0.2 0.4 0.6 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Instrument storage cabinets: 2 units (1.0m×0.5m×2.0m), along 6m wall（仪器储物柜：2个单元（1.0m×0.5m×2.0m），沿6米墙布置） -->
+    <!-- Cabinet 1（柜1） -->
+    <body name="physics_cabinet_1_body" pos="-5.5 5.25 1.0">
+        <geom name="physics_cabinet_1" type="box" pos="0 0 0" size="0.5 0.25 1.0" rgba="0.55 0.45 0.35 1" contype="1" conaffinity="1"/>
+        <geom name="physics_cabinet_1_door" type="box" pos="0 0.26 0" size="0.48 0.02 0.95" rgba="0.6 0.5 0.4 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Cabinet 2（柜2） -->
+    <body name="physics_cabinet_2_body" pos="-3.0 5.25 1.0">
+        <geom name="physics_cabinet_2" type="box" pos="0 0 0" size="0.5 0.25 1.0" rgba="0.55 0.45 0.35 1" contype="1" conaffinity="1"/>
+        <geom name="physics_cabinet_2_door" type="box" pos="0 0.26 0" size="0.48 0.02 0.95" rgba="0.6 0.5 0.4 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Auxiliary work table: 1.5m×0.6m×0.8m, along middle section of 8m wall（辅助工作台：1.5m×0.6m×0.8m，沿8米墙中段布置） -->
+    <body name="physics_aux_table_body" pos="-6.95 9 0.4">
+        <geom name="physics_aux_table" type="box" pos="0 0 0" size="0.3 0.75 0.4" rgba="0.45 0.45 0.45 1" contype="1" conaffinity="1"/>
+        <geom name="physics_aux_table_top" type="box" pos="0 0 0.42" size="0.31 0.76 0.02" rgba="0.35 0.35 0.35 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Small tools on auxiliary table（辅助台上的小工具） -->
+    <body name="aux_tool_box_body" pos="-6.95 8.5 0.89">
+        <freejoint/>
+        <geom name="aux_tool_box" type="box" pos="0 0 0" size="0.15 0.1 0.05" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
+    </body>
+    <body name="aux_notebook_body" pos="-6.95 9.5 0.85">
+        <freejoint/>
+        <geom name="aux_notebook" type="box" pos="0 0 0" size="0.12 0.15 0.01" rgba="0.9 0.9 0.8 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Supporting facilities（配套设施） -->
+    <!-- First aid kit in corner（角落的急救箱） -->
+    <body name="first_aid_kit_body" pos="-7.0 5.5 0.25">
+        <freejoint/>
+        <geom name="first_aid_kit" type="box" pos="0 0 0" size="0.15 0.1 0.15" rgba="0.9 0.1 0.1 1" contype="1" conaffinity="1"/>
+        <geom name="first_aid_cross" type="box" pos="0.01 0.1 0" size="0.02 0.05 0.08" rgba="1 1 1 1" contype="0" conaffinity="0"/>
+    </body>
+
+    <!-- Fire extinguisher in corner（角落的灭火器） -->
+    <body name="fire_extinguisher_body" pos="-6.9 5.8 0.4">
+        <freejoint/>
+        <geom name="fire_extinguisher" type="cylinder" pos="0 0 0" size="0.08 0.3" rgba="0.8 0.1 0.1 1" contype="1" conaffinity="1"/>
+        <geom name="extinguisher_label" type="box" pos="0.05 0 0.1" size="0.02 0.06 0.1" rgba="1 1 1 1" contype="0" conaffinity="0"/>
+    </body>
+
+    <!-- Power outlet points (visual markers)（电源插座点：视觉标记） -->
+    <geom name="power_outlet_1" type="box" pos="-1.3 7 0.3" size="0.03 0.08 0.08" rgba="0.9 0.9 0.9 1" contype="0" conaffinity="0"/>
+    <geom name="power_outlet_2" type="box" pos="-1.3 11 0.3" size="0.03 0.08 0.08" rgba="0.9 0.9 0.9 1" contype="0" conaffinity="0"/>
+    <geom name="power_outlet_3" type="box" pos="-7.2 9 0.3" size="0.03 0.08 0.08" rgba="0.9 0.9 0.9 1" contype="0" conaffinity="0"/>
+
+    <!-- ========== CHEMISTRY LAB: 6m(W) x 10m(D) x 3.2m(H) - RIGHT SIDE TOP（化学实验室：右侧顶部） ========== -->
+    <!-- Position: x=1.25 to 7.25, y=8 to 18（位置：x=1.25到7.25，y=8到18） -->
+
+    <!-- Floor（地面） -->
+    <geom name="chemistry_floor" type="box" pos="4.25 13 0" size="3 5 0.1" material="floor_mat" rgba="0.9 0.7 0.6 0.3" contype="1" conaffinity="1"/>
+
+    <!-- Walls (with door opening at corridor side)（墙壁：走廊侧有门洞） -->
+    <geom name="chemistry_wall_north" type="box" pos="4.25 18 1.6" size="3 0.1 1.6" material="wall_mat" contype="1" conaffinity="1"/>
+    <geom name="chemistry_wall_east" type="box" pos="7.25 13 1.6" size="0.1 5 1.6" material="wall_mat" contype="1" conaffinity="1"/>
+
+    <!-- West wall split for 1.2m（西墙分段预留1.2m开口） -->
+    <geom name="chemistry_wall_west_1" type="box" pos="1.25 11.2 1.6" size="0.1 3.2 1.6" material="wall_mat" contype="1" conaffinity="1"/>
+    <geom name="chemistry_wall_west_2" type="box" pos="1.25 16.8 1.6" size="0.1 1.2 1.6" material="wall_mat" contype="1" conaffinity="1"/>
+
+    <!-- South wall (partial, connects to corridor)（南墙：部分墙体，与走廊连接） -->
+    <geom name="chemistry_wall_south" type="box" pos="4.25 8 1.6" size="3 0.1 1.6" material="wall_mat" contype="1" conaffinity="1"/>
+
+    <!-- Chemistry lab core equipment（化学实验室核心设备） -->
+    <!-- Central anti-vibration main experiment table: 4m×1m×0.85m（中央防振主实验台：4m×1m×0.85m） -->
+    
+    <!-- Main table body with damping layer（主台桌体：防振缓冲层） -->
+    <body name="chemistry_main_table_body" pos="4.25 13 0.425">
+    <!-- Damping buffer layer（防振缓冲层） -->
+        <geom name="chemistry_table_base" type="box" pos="0 0 0" size="0.5 2 0.3" rgba="0.2 0.2 0.2 1" contype="1" conaffinity="1"/>
+        <!-- Corrosion-resistant granite top surface（防腐蚀花岗岩台面） -->
+        <geom name="chemistry_table_top" type="box" pos="0 0 0.425" size="0.51 2.01 0.025" material="granite_mat" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Organic synthesis zone marker - left half（有机合成区标记-左半部分） -->
+    <geom name="organic_zone_marker" type="box" pos="4.25 11.5 0.86" size="0.5 1 0.02" material="organic_zone_mat" contype="0" conaffinity="0"/>
+    
+    <!-- Inorganic analysis zone marker - right half（无机分析区标记-右半部分） -->
+    <geom name="inorganic_zone_marker" type="box" pos="4.25 14.5 0.86" size="0.5 1 0.02" material="inorganic_zone_mat" contype="0" conaffinity="0"/>
+
+    <!-- Embedded acid-alkali resistant sink at center: 0.5m×0.4m×0.3m（中心内嵌防酸碱水槽：0.5m×0.4m×0.3m） -->
+    <body name="chemistry_sink_body" pos="4.25 13 0.425">
+        <geom name="chemistry_sink" type="box" pos="0 0 0.15" size="0.25 0.2 0.15" material="sink_mat" contype="1" conaffinity="1"/>
+        <geom name="chemistry_sink_rim" type="box" pos="0 0 0.32" size="0.26 0.21 0.01" rgba="0.5 0.5 0.5 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Anti-splash stabilized power outlets (one every 0.8m)（防溅水稳定电源：每0.8m一个） -->
+    <!-- Left side outlets（左侧插座） -->
+    <geom name="chemistry_outlet_1" type="box" pos="4.0 11 0.4" size="0.04 0.1 0.08" rgba="0.8 0.8 0.8 1" contype="0" conaffinity="0"/>
+    <geom name="chemistry_outlet_2" type="box" pos="4.0 11.8 0.4" size="0.04 0.1 0.08" rgba="0.8 0.8 0.8 1" contype="0" conaffinity="0"/>
+    <geom name="chemistry_outlet_3" type="box" pos="4.0 12.6 0.4" size="0.04 0.1 0.08" rgba="0.8 0.8 0.8 1" contype="0" conaffinity="0"/>
+    
+    <!-- Right side outlets（右侧插座） -->
+    <geom name="chemistry_outlet_4" type="box" pos="4.5 13.4 0.4" size="0.04 0.1 0.08" rgba="0.8 0.8 0.8 1" contype="0" conaffinity="0"/>
+    <geom name="chemistry_outlet_5" type="box" pos="4.5 14.2 0.4" size="0.04 0.1 0.08" rgba="0.8 0.8 0.8 1" contype="0" conaffinity="0"/>
+    <geom name="chemistry_outlet_6" type="box" pos="4.5 15 0.4" size="0.04 0.1 0.08" rgba="0.8 0.8 0.8 1" contype="0" conaffinity="0"/>
+
+    <!-- Precision analysis equipment（精密分析设备） -->
+    <!-- HPLC on anti-vibration table（防振台上的高效液相色谱仪） -->
+    <body name="hplc_body" pos="4.25 11.5 1.18">
+        <freejoint/>
+        <geom name="hplc_main" type="box" pos="0 0 0" size="0.25 0.3 0.3" rgba="0.2 0.2 0.2 1" contype="1" conaffinity="1"/>
+        <geom name="hplc_pump" type="cylinder" pos="0.1 0 0.2" size="0.08 0.15" rgba="0.3 0.3 0.3 1" contype="1" conaffinity="1"/>
+        <geom name="hplc_detector" type="box" pos="-0.08 0.15 0.15" size="0.1 0.1 0.2" rgba="0.15 0.15 0.2 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- UV-Vis spectrophotometer on anti-vibration table（防振台上的紫外-可见分光光度计） -->
+    <body name="uvvis_body" pos="4.25 14.5 1.13">
+        <freejoint/>
+        <geom name="uvvis_main" type="box" pos="0 0 0" size="0.22 0.28 0.25" rgba="0.25 0.25 0.25 1" contype="1" conaffinity="1"/>
+        <geom name="uvvis_display" type="box" pos="0 -0.15 0.1" size="0.2 0.05 0.15" rgba="0.1 0.2 0.3 1" contype="1" conaffinity="1"/>
+        <geom name="uvvis_cuvette_holder" type="box" pos="0 0.12 -0.05" size="0.15 0.12 0.08" rgba="0.4 0.4 0.4 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Workstation PC below east side cabinet（东侧柜下方的工作站电脑） -->
+    <body name="workstation_pc_body" pos="6.5 13 1.18">
+        <freejoint/>
+        <geom name="pc_tower" type="box" pos="0 0 0" size="0.12 0.18 0.3" rgba="0.1 0.1 0.1 1" contype="1" conaffinity="1"/>
+        <geom name="pc_screen" type="box" pos="0.1 0 0.1" size="0.15 0.03 0.18" rgba="0.15 0.15 0.2 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Sample pre-treatment equipment area（样品前处理设备区） -->
+    <!-- Ultrasonic cleaner at west side table - south position（西侧台南位置的超声清洗机） -->
+    <body name="ultrasonic_cleaner_body" pos="2.0 9.5 1.13">
+        <freejoint/>
+        <geom name="ultrasonic_body" type="box" pos="0 0 0" size="0.25 0.3 0.25" rgba="0.4 0.4 0.4 1" contype="1" conaffinity="1"/>
+        <geom name="ultrasonic_tank" type="box" pos="0 0 -0.08" size="0.23 0.28 0.15" rgba="0.5 0.5 0.5 1" contype="1" conaffinity="1"/>
+        <geom name="ultrasonic_control" type="box" pos="0 -0.15 0.1" size="0.2 0.08 0.12" rgba="0.3 0.3 0.3 1" contype="0" conaffinity="0"/>
+    </body>
+
+    <!-- High-speed centrifuge - 0.5m spacing from ultrasonic cleaner（高速离心机：与超声清洗机相距0.5m） -->
+    <body name="centrifuge_body" pos="2.0 10.25 1.18">
+        <freejoint/>
+        <geom name="centrifuge_main" type="cylinder" pos="0 0 0" size="0.15 0.3" rgba="0.35 0.35 0.35 1" contype="1" conaffinity="1"/>
+        <geom name="centrifuge_rotor" type="cylinder" pos="0 0 -0.05" size="0.13 0.08" rgba="0.25 0.25 0.25 1" contype="1" conaffinity="1"/>
+        <geom name="centrifuge_lid" type="cylinder" pos="0 0 0.32" size="0.16 0.05" rgba="0.4 0.4 0.4 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Vacuum drying box - 0.5m spacing from centrifuge（真空干燥箱：与离心机相距0.5m） -->
+    <body name="vacuum_dryer_body" pos="2.0 11.0 1.18">
+        <freejoint/>
+        <geom name="vacuum_dryer_main" type="box" pos="0 0 0" size="0.28 0.3 0.3" rgba="0.4 0.4 0.4 1" contype="1" conaffinity="1"/>
+        <geom name="vacuum_dryer_door" type="box" pos="0.15 0 0" size="0.02 0.28 0.28" rgba="0.3 0.3 0.3 1" contype="1" conaffinity="1"/>
+        <geom name="vacuum_gauge" type="cylinder" pos="-0.12 0.12 0.1" size="0.04 0.05" rgba="0.2 0.2 0.2 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Ultra-pure water system - 0.5m spacing from dryer（超纯水系统：与干燥箱相距0.5m） -->
+    <body name="ultrapure_water_body" pos="2.0 11.75 1.28">
+        <freejoint/>
+        <geom name="water_system_main" type="box" pos="0 0 0" size="0.25 0.32 0.4" rgba="0.4 0.45 0.5 1" contype="1" conaffinity="1"/>
+        <geom name="water_tank" type="cylinder" pos="0 0.1 -0.1" size="0.1 0.15" rgba="0.5 0.55 0.6 1" contype="1" conaffinity="1"/>
+        <geom name="water_display" type="box" pos="-0.1 0 0.15" size="0.08 0.12 0.1" rgba="0.2 0.3 0.3 1" contype="0" conaffinity="0"/>
+        <geom name="water_outlet" type="cylinder" pos="0.12 0.15 0.15" size="0.02 0.08" rgba="0.6 0.6 0.6 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Chemistry lab functional side tables - along long walls（化学实验室功能边台：沿长墙方向） -->
+    <!-- Side table 1: Sample preparation station (west wall) - 4.5m×0.7m×0.85m（边台1：样品制备台（西墙），4.5m×0.7m×0.85m） -->
+    <body name="chemistry_side_table_1_body" pos="2.0 10.5 0.425">
+        <!-- Table base structure - 4.5m along Y-axis（桌体基座结构：沿Y轴4.5m） -->
+        <geom name="chemistry_side_table_1" type="box" pos="0 0 0" size="0.35 2.25 0.4" rgba="0.5 0.5 0.5 1" contype="1" conaffinity="1"/>
+        <geom name="chemistry_side_table_1_top" type="box" pos="0 0 0.425" size="0.36 2.26 0.025" material="granite_mat" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Adjustable reagent rack on sample prep table - height 0.6-1m（可升降试剂架：高度0.6-1m） -->
+    <body name="reagent_rack_body" pos="1.5 10.5 0.85">
+        <freejoint/>
+        <!-- Rack frame（架体框架） -->
+        <geom name="reagent_rack_frame" type="box" pos="0 0 0" size="0.15 0.5 0.25" rgba="0.6 0.6 0.6 1" contype="1" conaffinity="1"/>
+        <!-- Rack shelves - 3 units（试剂架搁板：3个） -->
+        <geom name="reagent_shelf_1" type="box" pos="0 0 -0.08" size="0.16 0.51 0.01" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
+        <geom name="reagent_shelf_2" type="box" pos="0 0 0" size="0.16 0.51 0.01" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
+        <geom name="reagent_shelf_3" type="box" pos="0 0 0.08" size="0.16 0.51 0.01" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Power outlets on sample prep table（样品制备台上的电源插座） -->
+    <geom name="sample_prep_outlet_1" type="box" pos="1.5 9 0.5" size="0.04 0.1 0.08" rgba="0.8 0.8 0.8 1" contype="0" conaffinity="0"/>
+    <geom name="sample_prep_outlet_2" type="box" pos="1.5 10.5 0.5" size="0.04 0.1 0.08" rgba="0.8 0.8 0.8 1" contype="0" conaffinity="0"/>
+    <geom name="sample_prep_outlet_3" type="box" pos="1.5 12 0.5" size="0.04 0.1 0.08" rgba="0.8 0.8 0.8 1" contype="0" conaffinity="0"/>
+
+    <!-- Side table 2: Instrument support station (east wall) - 4.5m×0.7m×0.85m（边台2：仪器支持台（东墙），4.5m×0.7m×0.85m） -->
+    <body name="chemistry_side_table_2_body" pos="6.5 13 0.425">
+        <!-- Table base structure - 4.5m along Y-axis（桌体基座结构：沿Y轴4.5m） -->
+        <geom name="chemistry_side_table_2" type="box" pos="0 0 0" size="0.35 2.25 0.4" rgba="0.5 0.5 0.5 1" contype="1" conaffinity="1"/>
+        <geom name="chemistry_side_table_2_top" type="box" pos="0 0 0.425" size="0.36 2.26 0.025" material="granite_mat" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Equipment power outlets on instrument table - red color（仪器台上的电源插座：红色） -->
+    <geom name="instr_power_1" type="box" pos="7.0 10 0.5" size="0.08 0.12 0.1" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0"/>
+    <geom name="instr_power_2" type="box" pos="7.0 13 0.5" size="0.08 0.12 0.1" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0"/>
+    <geom name="instr_power_3" type="box" pos="7.0 16 0.5" size="0.08 0.12 0.1" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0"/>
+
+    <!-- Data line connectors on instrument table - green color（仪器台上的数据连接器：绿色） -->
+    <geom name="instr_data_1" type="box" pos="6.8 10 0.5" size="0.06 0.1 0.08" rgba="0.2 0.8 0.2 1" contype="0" conaffinity="0"/>
+    <geom name="instr_data_2" type="box" pos="6.8 13 0.5" size="0.06 0.1 0.08" rgba="0.2 0.8 0.2 1" contype="0" conaffinity="0"/>
+    <geom name="instr_data_3" type="box" pos="6.8 16 0.5" size="0.06 0.1 0.08" rgba="0.2 0.8 0.2 1" contype="0" conaffinity="0"/>
+
+    <!-- Overhead cabinets - 4.5m×0.4m×0.6m（吊柜：4.5m×0.4m×0.6m） -->
+    <!-- Cabinet above sample prep table - west side（西侧样品制备台上的吊柜） -->
+    <body name="chemistry_overhead_cabinet_1_body" pos="2.0 10.5 2.0">
+        <!-- Cabinet structure（柜体结构） -->
+        <geom name="chem_cabinet_1_body" type="box" pos="0 0 0" size="0.35 2.25 0.3" rgba="0.7 0.7 0.6 1" contype="1" conaffinity="1"/>
+        <!-- Cabinet doors - front and back（柜门：前后双开） -->
+        <geom name="chem_cabinet_1_door_front" type="box" pos="-0.18 0 0" size="0.05 2.26 0.3" rgba="0.75 0.75 0.65 1" contype="1" conaffinity="1"/>
+        <geom name="chem_cabinet_1_door_back" type="box" pos="0.18 0 0" size="0.05 2.26 0.3" rgba="0.75 0.75 0.65 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Cabinet above instrument support table - east side（东侧仪器台上的吊柜） -->
+    <body name="chemistry_overhead_cabinet_2_body" pos="6.5 13 2.0">
+        <!-- Cabinet structure（柜体结构） -->
+        <geom name="chem_cabinet_2_body" type="box" pos="0 0 0" size="0.35 2.25 0.3" rgba="0.7 0.7 0.6 1" contype="1" conaffinity="1"/>
+        <!-- Cabinet doors - front and back（柜门：前后双开） -->
+        <geom name="chem_cabinet_2_door_front" type="box" pos="-0.18 0 0" size="0.05 2.26 0.3" rgba="0.75 0.75 0.65 1" contype="1" conaffinity="1"/>
+        <geom name="chem_cabinet_2_door_back" type="box" pos="0.18 0 0" size="0.05 2.26 0.3" rgba="0.75 0.75 0.65 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Room label marker（房间标记） -->
+    <geom name="chemistry_marker" type="box" pos="4.25 13 0.2" size="0.5 0.3 0.05" rgba="0.9 0.7 0.6 1" contype="0" conaffinity="0"/>
+
+    <!-- Ventilation and protection equipment（通风与防护设备） -->
+    <!-- Fume hood 1: Strong VOC exhaust（有机挥发通风橱） - outside north wall（北墙外侧） -->
+    <body name="fume_hood_1_body" pos="5.5 18.5 1.25">
+        <geom name="fume_hood_1_frame" type="box" pos="0 0 0" size="0.45 0.45 1.25" material="fume_hood_frame" contype="1" conaffinity="1"/>
+        <geom name="fume_hood_1_front" type="box" pos="0 -0.46 0.5" size="0.44 0.02 0.8" material="fume_hood_glass" contype="1" conaffinity="1"/>
+        <!-- Interior sink（内部水槽） -->
+        <geom name="fume_hood_1_sink" type="box" pos="0 0.2 -1.1" size="0.35 0.3 0.15" rgba="0.5 0.5 0.5 1" contype="1" conaffinity="1"/>
+        <!-- Corrosion-resistant shelves（防腐搁板） -->
+        <geom name="fume_hood_1_shelf_1" type="box" pos="0 0 -0.6" size="0.43 0.42 0.03" material="corrosion_shelf" contype="1" conaffinity="1"/>
+        <geom name="fume_hood_1_shelf_2" type="box" pos="0 0 -0.1" size="0.43 0.42 0.03" material="corrosion_shelf" contype="1" conaffinity="1"/>
+        <!-- Exhaust duct connector（排风管连接器） -->
+        <geom name="fume_hood_1_duct" type="cylinder" pos="0 0 1.3" size="0.1 0.2" rgba="0.3 0.3 0.3 1" contype="0" conaffinity="0"/>
+    </body>
+
+    <!-- Fume hood 2: Acid mist neutralizer（酸雾中和通风橱） - outside north wall（北墙外侧） -->
+    <body name="fume_hood_2_body" pos="6.5 18.5 1.25">
+        <geom name="fume_hood_2_frame" type="box" pos="0 0 0" size="0.45 0.45 1.25" material="fume_hood_frame" contype="1" conaffinity="1"/>
+        <geom name="fume_hood_2_front" type="box" pos="0 -0.46 0.5" size="0.44 0.02 0.8" material="fume_hood_glass" contype="1" conaffinity="1"/>
+        <!-- Interior sink（内部水槽） -->
+        <geom name="fume_hood_2_sink" type="box" pos="0 0.2 -1.1" size="0.35 0.3 0.15" rgba="0.5 0.5 0.5 1" contype="1" conaffinity="1"/>
+        <!-- Corrosion-resistant shelves（防腐搁板） -->
+        <geom name="fume_hood_2_shelf_1" type="box" pos="0 0 -0.6" size="0.43 0.42 0.03" material="corrosion_shelf" contype="1" conaffinity="1"/>
+        <geom name="fume_hood_2_shelf_2" type="box" pos="0 0 -0.1" size="0.43 0.42 0.03" material="corrosion_shelf" contype="1" conaffinity="1"/>
+        <!-- Acid mist neutralizer module（酸雾中和模块） -->
+        <geom name="acid_neutralizer" type="box" pos="0 -0.3 1.2" size="0.35 0.2 0.15" rgba="0.7 0.5 0.3 1" contype="1" conaffinity="1"/>
+        <!-- Exhaust duct connector（排风管连接器） -->
+        <geom name="fume_hood_2_duct" type="cylinder" pos="0 0 1.3" size="0.1 0.2" rgba="0.3 0.3 0.3 1" contype="0" conaffinity="0"/>
+    </body>
+
+    <!-- Atomic absorption hood（原子吸收罩） - above central table（中央台上方） -->
+    <body name="aa_hood_body" pos="4.25 13 2.5">
+        <!-- Hood structure - opening diameter 0.6m（罩体结构：开口直径0.6m） -->
+        <geom name="aa_hood_main" type="cylinder" pos="0 0 0" size="0.3 0.4" rgba="0.4 0.4 0.4 1" contype="1" conaffinity="1"/>
+        <!-- Suction inlet（抽气入口） -->
+        <geom name="aa_hood_inlet" type="cylinder" pos="0 0 -0.35" size="0.31 0.05" rgba="0.3 0.3 0.3 1" contype="0" conaffinity="0"/>
+        <!-- Hood connection to ceiling duct（罩体与天花管道连接） -->
+        <geom name="aa_hood_duct" type="cylinder" pos="0 0 0.4" size="0.08 0.3" rgba="0.3 0.3 0.3 1" contype="0" conaffinity="0"/>
+    </body>
+
+    <!-- Articulated suction hoods - 6 units distributed（万向抽气罩：6个单位分布） -->
+    <!-- Hood 1: Above central table - left position（中央台上方-左侧） -->
+    <body name="suction_hood_1_body" pos="3.5 12 2.8">
+        <geom name="suction_hood_1" type="cylinder" pos="0 0 0" size="0.15 0.2" rgba="0.5 0.5 0.6 1" contype="1" conaffinity="1"/>
+        <geom name="suction_hood_1_arm" type="cylinder" pos="0 -0.15 0.3" size="0.02 0.4" rgba="0.3 0.3 0.3 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Hood 2: Above central table - right position（中央台上方-右侧） -->
+    <body name="suction_hood_2_body" pos="5 14 2.8">
+        <geom name="suction_hood_2" type="cylinder" pos="0 0 0" size="0.15 0.2" rgba="0.5 0.5 0.6 1" contype="1" conaffinity="1"/>
+        <geom name="suction_hood_2_arm" type="cylinder" pos="0 0.15 0.3" size="0.02 0.4" rgba="0.3 0.3 0.3 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Hood 3: Above west side table（西侧台上方） -->
+    <body name="suction_hood_3_body" pos="2 9.5 2.7">
+        <geom name="suction_hood_3" type="cylinder" pos="0 0 0" size="0.15 0.2" rgba="0.5 0.5 0.6 1" contype="1" conaffinity="1"/>
+        <geom name="suction_hood_3_arm" type="cylinder" pos="0.15 0 0.3" size="0.02 0.4" rgba="0.3 0.3 0.3 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Hood 4: Above west side table - north position（西侧台上方-北侧） -->
+    <body name="suction_hood_4_body" pos="2 11.5 2.7">
+        <geom name="suction_hood_4" type="cylinder" pos="0 0 0" size="0.15 0.2" rgba="0.5 0.5 0.6 1" contype="1" conaffinity="1"/>
+        <geom name="suction_hood_4_arm" type="cylinder" pos="0.15 0 0.3" size="0.02 0.4" rgba="0.3 0.3 0.3 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Hood 5: Above east side table（东侧台上方） -->
+    <body name="suction_hood_5_body" pos="6.5 11 2.7">
+        <geom name="suction_hood_5" type="cylinder" pos="0 0 0" size="0.15 0.2" rgba="0.5 0.5 0.6 1" contype="1" conaffinity="1"/>
+        <geom name="suction_hood_5_arm" type="cylinder" pos="-0.15 0 0.3" size="0.02 0.4" rgba="0.3 0.3 0.3 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Hood 6: Above east side table - north position（东侧台上方-北侧） -->
+    <body name="suction_hood_6_body" pos="6.5 15 2.7">
+        <geom name="suction_hood_6" type="cylinder" pos="0 0 0" size="0.15 0.2" rgba="0.5 0.5 0.6 1" contype="1" conaffinity="1"/>
+        <geom name="suction_hood_6_arm" type="cylinder" pos="-0.15 0 0.3" size="0.02 0.4" rgba="0.3 0.3 0.3 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- ========== CHEMISTRY LAB: REAGENT AND SAMPLE STORAGE（化学实验室：试剂与样品存储区） ========== -->
+    <!-- Location: Along north wall inner side（位置：北墙内侧） -->
+    
+    <!-- Corrosion-resistant Reagent Cabinet 1: Refrigerated Storage (2-8℃, Standard Samples)（防腐试剂柜1：冷藏柜，2-8℃存放标准品） -->
+    <body name="reagent_cabinet_1_body" pos="1.8 17.3 0.9">
+        <!-- Cabinet body（柜体） -->
+        <geom name="reagent_cabinet_1_main" type="box" pos="0 0 0" size="0.5 0.25 0.9" rgba="0.6 0.4 0.3 1" contype="1" conaffinity="1"/>
+        <!-- Cabinet door（柜门） -->
+        <geom name="reagent_cabinet_1_door" type="box" pos="0.26 0 0" size="0.02 0.24 0.85" rgba="0.65 0.45 0.35 1" contype="1" conaffinity="1"/>
+        <!-- Refrigeration unit indicator（冷藏指示灯） -->
+        <geom name="reagent_cabinet_1_indicator" type="cylinder" pos="-0.2 0.1 0.7" size="0.02 0.05" rgba="0.1 0.8 0.1 1" contype="0" conaffinity="0"/>
+    </body>
+
+    <!-- Sample Storage Cabinet 1: Room Temperature Light-blocking Cabinet（样品存储柜1：常温避光柜） -->
+    <body name="sample_cabinet_1_body" pos="2.95 17.3 0.9">
+        <!-- Cabinet body（柜体） -->
+        <geom name="sample_cabinet_1_main" type="box" pos="0 0 0" size="0.5 0.25 0.9" rgba="0.3 0.3 0.4 1" contype="1" conaffinity="1"/>
+        <!-- Cabinet door with light-blocking material（避光柜门） -->
+        <geom name="sample_cabinet_1_door" type="box" pos="0.26 0 0" size="0.02 0.24 0.85" rgba="0.2 0.2 0.2 1" contype="1" conaffinity="1"/>
+        <!-- Light-blocking indicator（避光指示） -->
+        <geom name="sample_cabinet_1_indicator" type="box" pos="-0.2 0.1 0.7" size="0.08 0.1 0.15" rgba="0.1 0.1 0.1 1" contype="0" conaffinity="0"/>
+    </body>
+
+    <!-- Corrosion-resistant Reagent Cabinet 2: Acid-base Cabinet (Room Temperature)（防腐试剂柜2：酸碱柜，常温） -->
+    <body name="reagent_cabinet_2_body" pos="4.1 17.3 0.9">
+        <!-- Cabinet body（柜体） -->
+        <geom name="reagent_cabinet_2_main" type="box" pos="0 0 0" size="0.5 0.25 0.9" rgba="0.6 0.4 0.3 1" contype="1" conaffinity="1"/>
+        <!-- Cabinet door（柜门） -->
+        <geom name="reagent_cabinet_2_door" type="box" pos="0.26 0 0" size="0.02 0.24 0.85" rgba="0.65 0.45 0.35 1" contype="1" conaffinity="1"/>
+        <!-- Acid-base label（酸碱标签） -->
+        <geom name="reagent_cabinet_2_label" type="box" pos="-0.2 0 0.5" size="0.08 0.15 0.3" rgba="0.9 0.3 0.1 1" contype="0" conaffinity="0"/>
+    </body>
+
+    <!-- Sample Storage Cabinet 2: Low-temperature Cabinet (-20℃ for Test Samples)（样品存储柜2：低温柜，-20℃存放待测样品） -->
+    <body name="sample_cabinet_2_body" pos="5.25 17.3 0.9">
+        <!-- Cabinet body（柜体） -->
+        <geom name="sample_cabinet_2_main" type="box" pos="0 0 0" size="0.5 0.25 0.9" rgba="0.3 0.4 0.6 1" contype="1" conaffinity="1"/>
+        <!-- Cabinet door（柜门） -->
+        <geom name="sample_cabinet_2_door" type="box" pos="0.26 0 0" size="0.02 0.24 0.85" rgba="0.2 0.3 0.5 1" contype="1" conaffinity="1"/>
+        <!-- Low-temperature indicator with frost effect（低温指示-结霜效果） -->
+        <geom name="sample_cabinet_2_frost" type="box" pos="-0.2 0.1 0.7" size="0.08 0.1 0.15" rgba="0.7 0.8 0.9 0.5" contype="0" conaffinity="0"/>
+    </body>
+
+    <!-- Corrosion-resistant Reagent Cabinet 3: General Reagent Cabinet (Room Temperature)（防腐试剂柜3：普通试剂柜，常温） -->
+    <body name="reagent_cabinet_3_body" pos="6.4 17.3 0.9">
+        <!-- Cabinet body（柜体） -->
+        <geom name="reagent_cabinet_3_main" type="box" pos="0 0 0" size="0.5 0.25 0.9" rgba="0.6 0.4 0.3 1" contype="1" conaffinity="1"/>
+        <!-- Cabinet door（柜门） -->
+        <geom name="reagent_cabinet_3_door" type="box" pos="0.26 0 0" size="0.02 0.24 0.85" rgba="0.65 0.45 0.35 1" contype="1" conaffinity="1"/>
+        <!-- General reagent label（普通试剂标签） -->
+        <geom name="reagent_cabinet_3_label" type="box" pos="-0.2 0 0.5" size="0.08 0.15 0.3" rgba="0.3 0.3 0.8 1" contype="0" conaffinity="0"/>
+    </body>
+
+    <!-- ========== CHEMISTRY LAB: WASTE LIQUID TREATMENT AREA（化学实验室：废液处理区） ========== -->
+    <!-- Location: Southwest corner - far from experimental area（位置：西南角落-远离实验区） -->
+    
+    <!-- Waste Liquid Classification Drums (4 units)（分类废液桶-4个） -->
+    
+    <!-- Acid Waste Drum（酸性废液桶） -->
+    <body name="waste_acid_drum_body" pos="1.5 8.2 0.35">
+        <geom name="waste_acid_drum" type="cylinder" pos="0 0 0" size="0.18 0.35" rgba="0.9 0.2 0.2 1" contype="1" conaffinity="1"/>
+        <!-- Drum label（桶标签） -->
+        <geom name="waste_acid_label" type="box" pos="0.18 0 0.15" size="0.02 0.15 0.2" rgba="1 1 1 1" contype="0" conaffinity="0"/>
+    </body>
+
+    <!-- Alkali Waste Drum（碱性废液桶） -->
+    <body name="waste_alkali_drum_body" pos="1.5 8.8 0.35">
+        <geom name="waste_alkali_drum" type="cylinder" pos="0 0 0" size="0.18 0.35" rgba="0.3 0.3 0.8 1" contype="1" conaffinity="1"/>
+        <!-- Drum label（桶标签） -->
+        <geom name="waste_alkali_label" type="box" pos="0.18 0 0.15" size="0.02 0.15 0.2" rgba="1 1 1 1" contype="0" conaffinity="0"/>
+    </body>
+
+    <!-- Organic Waste Drum（有机溶剂废液桶） -->
+    <body name="waste_organic_drum_body" pos="1.5 9.4 0.35">
+        <geom name="waste_organic_drum" type="cylinder" pos="0 0 0" size="0.18 0.35" rgba="0.8 0.6 0.2 1" contype="1" conaffinity="1"/>
+        <!-- Drum label（桶标签） -->
+        <geom name="waste_organic_label" type="box" pos="0.18 0 0.15" size="0.02 0.15 0.2" rgba="1 1 1 1" contype="0" conaffinity="0"/>
+    </body>
+
+    <!-- Heavy Metal Waste Drum（含重金属废液桶） -->
+    <body name="waste_heavy_metal_drum_body" pos="1.5 10 0.35">
+        <geom name="waste_heavy_metal_drum" type="cylinder" pos="0 0 0" size="0.18 0.35" rgba="0.5 0.2 0.6 1" contype="1" conaffinity="1"/>
+        <!-- Drum label（桶标签） -->
+        <geom name="waste_heavy_metal_label" type="box" pos="0.18 0 0.15" size="0.02 0.15 0.2" rgba="1 1 1 1" contype="0" conaffinity="0"/>
+    </body>
+
+    <!-- Waste Liquid Temporary Storage Cabinet（废液暂存柜，1m×0.6m×1m） -->
+    <body name="waste_storage_cabinet_body" pos="1.5 9.1 0.5">
+        <!-- Cabinet body（柜体） -->
+        <geom name="waste_storage_cabinet_main" type="box" pos="0 0 0" size="0.5 0.3 0.5" rgba="0.4 0.3 0.3 1" contype="1" conaffinity="1"/>
+        <!-- Cabinet door with hazard warning color（带危险标警色的柜门） -->
+        <geom name="waste_storage_cabinet_door" type="box" pos="0.26 0 0" size="0.02 0.28 0.48" rgba="0.8 0.4 0 1" contype="1" conaffinity="1"/>
+        <!-- Hazard warning stripe（危险警告条纹） -->
+        <geom name="waste_storage_cabinet_stripe_1" type="box" pos="-0.2 0 0.2" size="0.08 0.28 0.08" rgba="0 0 0 1" contype="0" conaffinity="0"/>
+        <geom name="waste_storage_cabinet_stripe_2" type="box" pos="-0.2 0 0.35" size="0.08 0.28 0.08" rgba="1 1 0 1" contype="0" conaffinity="0"/>
+    </body>
+
+    <!-- ========== BIOLOGY LAB: 7m(W) x 8m(D) x 3.2m(H) - RIGHT SIDE BOTTOM（生物实验室：右侧底部） ========== -->
+    <!-- Position: x=1.25 to 8.25, y=0 to 8（位置：x=1.25到8.25，y=0到8） -->
+
+    <!-- Floor（地面） -->
+    <geom name="biology_floor" type="box" pos="4.75 4 0" size="3.5 4 0.1" material="floor_mat" rgba="0.7 0.9 0.7 0.3" contype="1" conaffinity="1"/>
+
+    <!-- Walls (with door opening at corridor side)（墙壁：走廊侧有门洞） -->
+    <geom name="biology_wall_south" type="box" pos="4.75 0 1.6" size="3.5 0.1 1.6" material="wall_mat" contype="1" conaffinity="1"/>
+    <geom name="biology_wall_east" type="box" pos="8.25 4 1.6" size="0.1 4 1.6" material="wall_mat" contype="1" conaffinity="1"/>
+
+    <!-- West wall split for 1.2m opening at center（西墙分段：中心预留1.2m开口） -->
+    <geom name="biology_wall_west_1" type="box" pos="1.25 1.7 1.6" size="0.1 1.7 1.6" material="wall_mat" contype="1" conaffinity="1"/>
+    <geom name="biology_wall_west_2" type="box" pos="1.25 6.3 1.6" size="0.1 1.7 1.6" material="wall_mat" contype="1" conaffinity="1"/>
+
+    <!-- North wall (partial, connects to corridor)（北墙：部分墙体，与走廊连接） -->
+    <geom name="biology_wall_north" type="box" pos="4.75 8 1.6" size="3.5 0.1 1.6" material="wall_mat" contype="1" conaffinity="1"/>
+
+    <!-- Room label marker（房间标记） -->
+    <geom name="biology_marker" type="box" pos="4.75 4 0.2" size="0.5 0.3 0.05" rgba="0.7 0.9 0.7 1" contype="0" conaffinity="0"/>
+
+
+
+    <!-- Camera positions（相机位置） -->
+    <camera name="overview" pos="0 9 20" xyaxes="1 0 0 0 1 0" mode="fixed"/>
+    <camera name="physics_view" pos="-4.25 9 10" xyaxes="0 1 0 -1 0 0" mode="fixed"/>
+    <camera name="chemistry_view" pos="4.25 13 12" xyaxes="0 1 0 -1 0 0" mode="fixed"/>
+    <camera name="biology_view" pos="4.75 4 10" xyaxes="0 1 0 -1 0 0" mode="fixed"/>
+  </worldbody>
+
+
+</mujoco>
