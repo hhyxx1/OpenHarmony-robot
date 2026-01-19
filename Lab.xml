@@ -623,25 +623,25 @@
     </body>
 
     <!-- -20°C freezer: 0.8m×0.6m×1.8m immediately to the right of 4°C fridge（-20℃低温冰箱：冷藏冰箱右侧，紧邻摆放） -->
-    <body name="biology_freezer_minus20_body" pos="3.4 7.7 0.9">
+    <body name="biology_freezer_minus20_body" pos="3.2 7.7 0.9">
       <geom name="biology_freezer_minus20_main" type="box" pos="0 0 0" size="0.4 0.3 0.9" rgba="0.8 0.85 0.9 1" contype="1" conaffinity="1"/>
       <geom name="biology_freezer_minus20_door" type="box" pos="-0.41 0 0.1" size="0.02 0.28 0.8" rgba="0.9 0.95 1 1" contype="1" conaffinity="1"/>
     </body>
 
     <!-- -80°C ultra-low freezer: 1.0m×0.7m×2.0m near north-east corner of biology lab（-80℃超低温冰箱：北段角落） -->
-    <body name="biology_freezer_minus80_body" pos="6.8 7.8 1.0">
+    <body name="biology_freezer_minus80_body" pos="7.0 7.8 1.0">
       <geom name="biology_freezer_minus80_main" type="box" pos="0 0 0" size="0.5 0.35 1.0" rgba="0.75 0.8 0.9 1" contype="1" conaffinity="1"/>
       <geom name="biology_freezer_minus80_door" type="box" pos="-0.51 0 0.2" size="0.02 0.32 0.9" rgba="0.9 0.95 1 1" contype="1" conaffinity="1"/>
     </body>
 
     <!-- Biological reagent cabinet with T/H control: 1.2m×0.6m×1.8m at central north wall（带温湿度控制的生物试剂柜：北侧墙中段） -->
-    <body name="biology_reagent_cabinet_body" pos="4.8 7.7 0.9">
+    <body name="biology_reagent_cabinet_body" pos="4.5 7.7 0.9">
       <geom name="biology_reagent_cabinet_main" type="box" pos="0 0 0" size="0.6 0.3 0.9" rgba="0.7 0.6 0.5 1" contype="1" conaffinity="1"/>
       <geom name="biology_reagent_cabinet_door" type="box" pos="-0.61 0 0.1" size="0.02 0.28 0.8" rgba="0.8 0.7 0.6 1" contype="1" conaffinity="1"/>
     </body>
 
     <!-- Multi-layer sample storage rack: 1.0m×0.4m×1.8m at right segment of north wall（样品存储架：北侧墙右侧位置） -->
-    <body name="biology_sample_rack_body" pos="5.9 7.6 0.9">
+    <body name="biology_sample_rack_body" pos="5.8 7.6 0.9">
       <geom name="biology_sample_rack_frame" type="box" pos="0 0 0" size="0.5 0.2 0.9" rgba="0.75 0.75 0.75 1" contype="1" conaffinity="1"/>
       <geom name="biology_sample_rack_shelf_1" type="box" pos="0 0 -0.3" size="0.51 0.21 0.02" rgba="0.85 0.85 0.85 1" contype="1" conaffinity="1"/>
       <geom name="biology_sample_rack_shelf_2" type="box" pos="0 0 0" size="0.51 0.21 0.02" rgba="0.85 0.85 0.85 1" contype="1" conaffinity="1"/>
@@ -649,8 +649,138 @@
     </body>
 
     <!-- 30L liquid nitrogen tank: 0.5m×0.5m×1.2m at far east end of north wall, away from heat sources（30L液氮罐：北侧墙最东段，远离热源） -->
-    <body name="biology_ln2_tank_body" pos="7.7 7.7 0.6">
+    <body name="biology_ln2_tank_body" pos="7.8 7.5 0.6">
       <geom name="biology_ln2_tank" type="cylinder" pos="0 0 0" size="0.25 0.6" rgba="0.7 0.8 0.9 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- ========== BIOLOGY LAB: SAMPLE PROCESSING AND DETECTION ZONE - PREPARATION + QUALITATIVE/QUANTITATIVE ANALYSIS（生物实验室：样品处理与检测区-样品前处理+定性定量分析） ========== -->
+
+    <!-- Central experiment table (with drawers): 2.0m×1.0m×0.8m, centered, square placement（中央实验台：2.0m×1.0m×0.8m，实验室几何中心，方正摆放） -->
+    <body name="biology_central_table_body" pos="4.75 4.0 0.4">
+      <geom name="biology_central_table" type="box" pos="0 0 0" size="1.0 0.5 0.4" rgba="0.4 0.4 0.4 1" contype="1" conaffinity="1"/>
+      <geom name="biology_central_table_top" type="box" pos="0 0 0.42" size="1.01 0.51 0.02" rgba="0.3 0.3 0.3 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Large capacity centrifuge (4000rpm): 0.7m×0.6m×0.8m, left side of central table near corridor（大容量离心机：0.7m×0.6m×0.8m，中央台左侧，靠近通道） -->
+    <body name="biology_large_centrifuge_body" pos="3.3 4.0 0.4">
+      <geom name="biology_large_centrifuge" type="box" pos="0 0 0" size="0.35 0.3 0.4" rgba="0.5 0.5 0.5 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- PCR仪 (96孔): 0.5m×0.4m×0.3m, south wall near window left side（PCR仪：0.5m×0.4m×0.3m，南侧墙靠窗区左侧） -->
+    <body name="biology_pcr_body" pos="2.4 1.0 0.15">
+      <geom name="biology_pcr_main" type="box" pos="0 0 0" size="0.25 0.2 0.15" rgba="0.3 0.3 0.4 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Gel imaging system: 0.6m×0.5m×0.7m, right side of PCR仪, adjacent placement（凝胶成像系统：0.6m×0.5m×0.7m，PCR仪右侧，紧邻摆放） -->
+    <body name="biology_gel_imaging_body" pos="3.3 1.0 0.35">
+      <geom name="biology_gel_imaging_main" type="box" pos="0 0 0" size="0.3 0.25 0.35" rgba="0.4 0.4 0.5 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- UV spectrophotometer: 0.5m×0.4m×0.6m, right side of gel imaging system（紫外分光光度计：0.5m×0.4m×0.6m，凝胶成像系统右侧） -->
+    <body name="biology_uv_spectro_body" pos="4.2 1.0 0.3">
+      <geom name="biology_uv_spectro_main" type="box" pos="0 0 0" size="0.25 0.2 0.3" rgba="0.4 0.5 0.6 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Ultra-pure water system (10L/h): 0.5m×0.4m×1.0m, end of window area near central table（超纯水机：0.5m×0.4m×1.0m，靠窗区末端，靠近中央台） -->
+    <body name="biology_ultrapure_water_body" pos="5.2 2.0 0.5">
+      <geom name="biology_ultrapure_water_main" type="box" pos="0 0 0" size="0.25 0.2 0.5" rgba="0.5 0.55 0.6 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Ultrasonic cell disruptor: 0.4m×0.3m×0.5m, right side of central table near water system（超声波细胞破碎仪：0.4m×0.3m×0.5m，中央台右侧，靠近纯水机） -->
+    <body name="biology_ultrasonic_disruptor_body" pos="6.0 3.6 0.25">
+      <geom name="biology_ultrasonic_disruptor_main" type="box" pos="0 0 0" size="0.2 0.15 0.25" rgba="0.5 0.5 0.5 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Constant temperature water bath (6孔): 0.5m×0.3m×0.4m, front of central table, middle position（恒温水浴锅：0.5m×0.3m×0.4m，中央台前端，中间位置） -->
+    <body name="biology_water_bath_body" pos="4.75 3.2 0.2">
+      <geom name="biology_water_bath_main" type="box" pos="0 0 0" size="0.25 0.15 0.2" rgba="0.4 0.5 0.5 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Magnetic stirrer (multi-station): 0.4m×0.3m×0.2m, back of central table near reagent area（磁力搅拌器：0.4m×0.3m×0.2m，中央台后端，靠近试剂区） -->
+    <body name="biology_magnetic_stirrer_body" pos="4.75 4.8 0.1">
+      <geom name="biology_magnetic_stirrer_main" type="box" pos="0 0 0" size="0.2 0.15 0.1" rgba="0.6 0.6 0.6 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- ========== BIOLOGY LAB: AUXILIARY OPERATION ZONE - CONSUMABLES PREPARATION + WASTE TREATMENT（生物实验室：辅助操作区-耗材准备+废液处理） ========== -->
+
+    <!-- Auxiliary side table (segmented): 4.0m×0.6m×0.8m, along south wall with gaps at both ends, hollow underneath（辅助边台：4.0m×0.6m×0.8m，沿南侧墙布置，两端留空隙，下方镂空） -->
+    <body name="biology_aux_side_table_body" pos="4.5 0.3 0.4">
+      <!-- Table top（台面） -->
+      <geom name="biology_aux_side_table_top" type="box" pos="0 0 0.62" size="2.01 0.31 0.02" rgba="0.6 0.6 0.6 1" contype="1" conaffinity="1"/>
+      <!-- Table legs（桌腿） -->
+      <geom name="biology_aux_side_table_leg1" type="box" pos="-1.8 0 0.2" size="0.1 0.3 0.4" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
+      <geom name="biology_aux_side_table_leg2" type="box" pos="1.8 0 0.2" size="0.1 0.3 0.4" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
+      <geom name="biology_aux_side_table_leg3" type="box" pos="-1.8 0 0.2" size="0.1 0.3 0.4" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
+      <geom name="biology_aux_side_table_leg4" type="box" pos="1.8 0 0.2" size="0.1 0.3 0.4" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Sterile consumables autoclave (small): 0.6m×0.6m×0.8m, south wall left side（无菌耗材灭菌锅：0.6m×0.6m×0.8m，南侧墙左侧） -->
+    <body name="biology_autoclave_body" pos="1.8 1.0 0.4">
+      <geom name="biology_autoclave_main" type="box" pos="0 0 0" size="0.3 0.3 0.4" rgba="0.8 0.8 0.8 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Bottle washer (small): 0.5m×0.4m×0.6m, north of autoclave under side table（洗瓶机：0.5m×0.4m×0.6m，灭菌锅北侧，边台下方） -->
+    <body name="biology_bottle_washer_body" pos="3.1 0.5 0.3">
+      <geom name="biology_bottle_washer_main" type="box" pos="0 0 0" size="0.25 0.2 0.3" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Waste liquid collection barrels (2 classified): 0.5m×0.5m×0.6m, middle under side table, sealed with lid（废液收集桶：0.5m×0.5m×0.6m，边台下方中段，带盖密封） -->
+    <body name="biology_waste_barrel_1_body" pos="3.75 0.5 0.3">
+      <geom name="biology_waste_barrel_1" type="cylinder" pos="0 0 0" size="0.25 0.3" rgba="0.8 0.2 0.2 1" contype="1" conaffinity="1"/>
+      <geom name="biology_waste_barrel_1_lid" type="cylinder" pos="0 0 0.32" size="0.26 0.05" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
+    </body>
+    <body name="biology_waste_barrel_2_body" pos="4.45 0.5 0.3">
+      <geom name="biology_waste_barrel_2" type="cylinder" pos="0 0 0" size="0.25 0.3" rgba="0.2 0.2 0.8 1" contype="1" conaffinity="1"/>
+      <geom name="biology_waste_barrel_2_lid" type="cylinder" pos="0 0 0.32" size="0.26 0.05" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Classified trash bins (3): 0.4m×0.4m×0.6m, north under side table near corner（分类垃圾桶：0.4m×0.4m×0.6m，边台下方北段，靠近角落） -->
+    <body name="biology_trash_bin_1_body" pos="5.0 0.5 0.3">
+      <geom name="biology_trash_bin_1" type="cylinder" pos="0 0 0" size="0.2 0.3" rgba="0.9 0.1 0.1 1" contype="1" conaffinity="1"/>
+    </body>
+    <body name="biology_trash_bin_2_body" pos="5.5 0.5 0.3">
+      <geom name="biology_trash_bin_2" type="cylinder" pos="0 0 0" size="0.2 0.3" rgba="0.1 0.9 0.1 1" contype="1" conaffinity="1"/>
+    </body>
+    <body name="biology_trash_bin_3_body" pos="5.95 0.5 0.3">
+      <geom name="biology_trash_bin_3" type="cylinder" pos="0 0 0" size="0.2 0.3" rgba="0.1 0.1 0.1 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Consumables storage cabinet: 1.0m×0.5m×1.8m, south wall above side table（耗材储物柜：1.0m×0.5m×1.8m，南侧墙上方） -->
+    <body name="biology_consumables_cabinet_body" pos="2.0 0.3 0.9">
+      <geom name="biology_consumables_cabinet_main" type="box" pos="0 0 0" size="0.5 0.25 0.9" rgba="0.8 0.8 0.7 1" contype="1" conaffinity="1"/>
+      <geom name="biology_consumables_cabinet_door" type="box" pos="0.26 0 0" size="0.02 0.24 0.85" rgba="0.85 0.85 0.75 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- ========== BIOLOGY LAB: SAFETY AUXILIARY ZONE - EMERGENCY PROTECTION + ENVIRONMENTAL MONITORING（生物实验室：安全辅助区-应急防护+环境监测） ========== -->
+
+    <!-- Wall-mounted first aid kit: 0.4m×0.3m×0.2m, above BSC on east wall（壁挂急救箱：0.4m×0.3m×0.2m，东侧墙安全柜上方墙面） -->
+    <body name="biology_first_aid_kit_body" pos="7.8 2.0 2.1">
+      <geom name="biology_first_aid_kit" type="box" pos="0 0 0" size="0.2 0.15 0.1" rgba="0.9 0.1 0.1 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Wall-mounted eye wash station: 0.2m×0.3m×0.5m, west wall near entrance（壁挂洗眼器：0.2m×0.3m×0.5m，西墙靠近入口） -->
+    <body name="biology_eye_wash_body" pos="1.365 5.7 1.6">
+      <geom name="biology_eye_wash" type="box" pos="0 0 0" size="0.1 0.15 0.25" rgba="0.3 0.5 0.9 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Emergency shower: 0.5m×0.5m×0.3m, central corridor ceiling（紧急喷淋装置：0.5m×0.5m×0.3m，中央通道上方天花板） -->
+    <body name="biology_emergency_shower_body" pos="4.75 4.0 3.2">
+      <geom name="biology_emergency_shower" type="box" pos="0 0 0" size="0.25 0.25 0.15" rgba="0.3 0.7 0.9 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Wall-mounted biohazard warning sign: 0.02m×0.3m×0.2m, west wall inside entrance（生物安全警示牌：0.02m×0.3m×0.2m，西墙入口内侧） -->
+    <body name="biology_biohazard_sign_body" pos="1.365 4.8 2.0">
+      <geom name="biology_biohazard_sign" type="box" pos="0 0 0" size="0.01 0.15 0.1" rgba="0.9 0.1 0.1 1" contype="0" conaffinity="0"/>
+    </body>
+
+    <!-- Temperature and humidity meter: 0.15m×0.1m×0.05m, east wall near incubator（温湿度计：0.15m×0.1m×0.05m，东侧墙培养箱旁墙面） -->
+    <body name="biology_temp_humidity_meter_body" pos="8.062 4.0 1.6">
+      <geom name="biology_temp_humidity_meter" type="box" pos="0 0 0" size="0.075 0.05 0.025" rgba="0.3 0.3 0.3 1" contype="0" conaffinity="0"/>
+    </body>
+
+    <!-- UV disinfection lamp: 1.2m×0.1m×0.05m, ceiling above aseptic operation area（紫外线消毒灯：1.2m×0.1m×0.05m，无菌操作区上方天花板） -->
+    <body name="biology_uv_lamp_body" pos="6.9 2.0 3.2">
+      <geom name="biology_uv_lamp" type="box" pos="0 0 0" size="0.6 0.05 0.025" rgba="0.9 0.9 0.9 1" contype="0" conaffinity="0"/>
     </body>
 
     <!-- Camera positions（相机位置） -->
