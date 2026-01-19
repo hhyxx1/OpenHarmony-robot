@@ -554,7 +554,104 @@
     <!-- Room label marker（房间标记） -->
     <geom name="biology_marker" type="box" pos="4.75 4 0.2" size="0.5 0.3 0.05" rgba="0.7 0.9 0.7 1" contype="0" conaffinity="0"/>
 
+    <!-- ========== BIOLOGY LAB: ENTRY TRANSITION ZONE - CLEANING & ISOLATION（生物实验室：入口过渡区-清洁防护+污染隔离） ========== -->
 
+    <!-- Sensor wash basin: 0.6m×0.5m×0.8m, inside door right side（感应洗手台：0.6m×0.5m×0.8m，门内右侧） -->
+    <body name="biology_washbasin_body" pos="1.8 3.0 0.4">
+      <geom name="biology_washbasin" type="box" pos="0 0 0" size="0.3 0.25 0.4" material="sink_mat" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Hand dryer above wash basin on west wall：0.3m×0.2m×0.6m（洗手台上方墙面烘手机：0.3m×0.2m×0.6m） -->
+    <geom name="biology_hand_dryer" type="box" pos="1.3 3.3 1.6" size="0.15 0.1 0.3" rgba="0.9 0.9 0.9 1" contype="0" conaffinity="0"/>
+
+    <!-- Shoe cover dispenser: 0.5m×0.3m×0.4m, inside door left side away from main passage（鞋套机：0.5m×0.3m×0.4m，门内左侧靠角落） -->
+    <body name="biology_shoe_cover_body" pos="1.8 4.9 0.2">
+      <geom name="biology_shoe_cover_machine" type="box" pos="0 0 0" size="0.25 0.15 0.2" rgba="0.6 0.6 0.7 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- ========== BIOLOGY LAB: CORE ASEPTIC OPERATION ZONE - CELL / MICROBIOLOGY WORK（生物实验室：核心无菌操作区-细胞/微生物关键操作） ========== -->
+
+    <!-- Class II Biosafety Cabinet: 1.5m×0.8m×2.0m along east wall near south window（II级生物安全柜：1.5m×0.8m×2.0m，东侧墙靠南，紧邻窗户） -->
+    <body name="biology_bsc_body" pos="7.8 2.0 1.0">
+      <!-- BSC main housing（生物安全柜箱体） -->
+      <geom name="biology_bsc_main" type="box" pos="0 0 0" size="0.4 0.75 1.0" rgba="0.8 0.8 0.85 1" contype="1" conaffinity="1"/>
+      <!-- Front glass sash opening（前挡玻璃开口） -->
+      <geom name="biology_bsc_glass" type="box" pos="-0.41 0 0.4" size="0.02 0.6 0.4" rgba="0.6 0.7 0.9 0.4" contype="0" conaffinity="0"/>
+      <!-- Internal work surface（内部工作台面） -->
+      <geom name="biology_bsc_worktop" type="box" pos="-0.2 0 0.0" size="0.35 0.7 0.05" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
+      <!-- Pipette rack (12-slot) on left side inside BSC（12孔移液器架：生物安全柜内左侧） -->
+      <geom name="biology_pipette_rack" type="box" pos="-0.15 -0.25 0.15" size="0.15 0.1 0.075" rgba="0.6 0.6 0.7 1" contype="1" conaffinity="1"/>
+      <!-- Sterile consumables box on right side inside BSC（无菌耗材盒：生物安全柜内右侧） -->
+      <geom name="biology_consumable_box" type="box" pos="-0.15 0.25 0.12" size="0.2 0.15 0.1" rgba="0.9 0.9 0.9 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Auxiliary operation table: 1.5m×0.6m×0.8m, parallel to BSC, placed beside it（操作辅助台：1.5m×0.6m×0.8m，平行于生物安全柜摆放） -->
+    <body name="biology_aux_table_body" pos="6.0 2.0 0.4">
+      <geom name="biology_aux_table" type="box" pos="0 0 0" size="0.3 0.75 0.4" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
+      <geom name="biology_aux_table_top" type="box" pos="0 0 0.42" size="0.31 0.76 0.02" rgba="0.6 0.6 0.6 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Compact cell counter: 0.3m×0.3m×0.4m at center of auxiliary table（小型细胞计数仪：辅助台中间位置） -->
+    <body name="biology_cell_counter_body" pos="6.0 2.0 0.84">
+      <geom name="biology_cell_counter" type="box" pos="0 0 0" size="0.15 0.15 0.2" rgba="0.3 0.3 0.4 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Benchtop low-speed centrifuge: 0.4m×0.4m×0.5m at auxiliary table end near BSC（台式低速离心机：辅助台末端靠近生物安全柜） -->
+    <body name="biology_aux_centrifuge_body" pos="6.0 2.5 1.1">
+      <geom name="biology_aux_centrifuge" type="cylinder" pos="0 0 0" size="0.2 0.25" rgba="0.5 0.5 0.55 1" contype="1" conaffinity="1"/>
+      <geom name="biology_aux_centrifuge_lid" type="cylinder" pos="0 0 0.27" size="0.21 0.05" rgba="0.6 0.6 0.65 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- ========== BIOLOGY LAB: CULTURE AND STORAGE ZONE - SAMPLE PRESERVATION & INCUBATION（生物实验室：培养与存储区-样品保存与恒温培养） ========== -->
+
+    <!-- 37°C incubator: 0.6m×0.5m×0.8m on east wall north segment, just north of BSC（恒温培养箱37℃：东侧墙北段，安全柜北侧） -->
+    <body name="biology_incubator_37_body" pos="7.8 4.0 0.4">
+      <geom name="biology_incubator_37_main" type="box" pos="0 0 0" size="0.3 0.25 0.4" rgba="0.85 0.85 0.9 1" contype="1" conaffinity="1"/>
+      <geom name="biology_incubator_37_door" type="box" pos="-0.31 0 0.1" size="0.02 0.24 0.3" rgba="0.9 0.9 0.95 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- CO₂ incubator (5%): 0.7m×0.6m×1.0m next to 37°C incubator along east wall（CO₂培养箱5%：紧邻恒温培养箱，沿东墙摆放） -->
+    <body name="biology_incubator_co2_body" pos="7.8 5.2 0.5">
+      <geom name="biology_incubator_co2_main" type="box" pos="0 0 0" size="0.35 0.3 0.5" rgba="0.8 0.85 0.9 1" contype="1" conaffinity="1"/>
+      <geom name="biology_incubator_co2_door" type="box" pos="-0.36 0 0.15" size="0.02 0.28 0.35" rgba="0.9 0.9 0.95 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- 4°C refrigerator: 0.8m×0.6m×1.8m at left segment of north wall（4℃冷藏冰箱：北侧墙左侧位置） -->
+    <body name="biology_fridge_4c_body" pos="2.0 7.7 0.9">
+      <geom name="biology_fridge_4c_main" type="box" pos="0 0 0" size="0.4 0.3 0.9" rgba="0.85 0.9 0.95 1" contype="1" conaffinity="1"/>
+      <geom name="biology_fridge_4c_door" type="box" pos="-0.41 0 0.1" size="0.02 0.28 0.8" rgba="0.9 0.95 1 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- -20°C freezer: 0.8m×0.6m×1.8m immediately to the right of 4°C fridge（-20℃低温冰箱：冷藏冰箱右侧，紧邻摆放） -->
+    <body name="biology_freezer_minus20_body" pos="3.4 7.7 0.9">
+      <geom name="biology_freezer_minus20_main" type="box" pos="0 0 0" size="0.4 0.3 0.9" rgba="0.8 0.85 0.9 1" contype="1" conaffinity="1"/>
+      <geom name="biology_freezer_minus20_door" type="box" pos="-0.41 0 0.1" size="0.02 0.28 0.8" rgba="0.9 0.95 1 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- -80°C ultra-low freezer: 1.0m×0.7m×2.0m near north-east corner of biology lab（-80℃超低温冰箱：北段角落） -->
+    <body name="biology_freezer_minus80_body" pos="6.8 7.8 1.0">
+      <geom name="biology_freezer_minus80_main" type="box" pos="0 0 0" size="0.5 0.35 1.0" rgba="0.75 0.8 0.9 1" contype="1" conaffinity="1"/>
+      <geom name="biology_freezer_minus80_door" type="box" pos="-0.51 0 0.2" size="0.02 0.32 0.9" rgba="0.9 0.95 1 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Biological reagent cabinet with T/H control: 1.2m×0.6m×1.8m at central north wall（带温湿度控制的生物试剂柜：北侧墙中段） -->
+    <body name="biology_reagent_cabinet_body" pos="4.8 7.7 0.9">
+      <geom name="biology_reagent_cabinet_main" type="box" pos="0 0 0" size="0.6 0.3 0.9" rgba="0.7 0.6 0.5 1" contype="1" conaffinity="1"/>
+      <geom name="biology_reagent_cabinet_door" type="box" pos="-0.61 0 0.1" size="0.02 0.28 0.8" rgba="0.8 0.7 0.6 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- Multi-layer sample storage rack: 1.0m×0.4m×1.8m at right segment of north wall（样品存储架：北侧墙右侧位置） -->
+    <body name="biology_sample_rack_body" pos="5.9 7.6 0.9">
+      <geom name="biology_sample_rack_frame" type="box" pos="0 0 0" size="0.5 0.2 0.9" rgba="0.75 0.75 0.75 1" contype="1" conaffinity="1"/>
+      <geom name="biology_sample_rack_shelf_1" type="box" pos="0 0 -0.3" size="0.51 0.21 0.02" rgba="0.85 0.85 0.85 1" contype="1" conaffinity="1"/>
+      <geom name="biology_sample_rack_shelf_2" type="box" pos="0 0 0" size="0.51 0.21 0.02" rgba="0.85 0.85 0.85 1" contype="1" conaffinity="1"/>
+      <geom name="biology_sample_rack_shelf_3" type="box" pos="0 0 0.3" size="0.51 0.21 0.02" rgba="0.85 0.85 0.85 1" contype="1" conaffinity="1"/>
+    </body>
+
+    <!-- 30L liquid nitrogen tank: 0.5m×0.5m×1.2m at far east end of north wall, away from heat sources（30L液氮罐：北侧墙最东段，远离热源） -->
+    <body name="biology_ln2_tank_body" pos="7.7 7.7 0.6">
+      <geom name="biology_ln2_tank" type="cylinder" pos="0 0 0" size="0.25 0.6" rgba="0.7 0.8 0.9 1" contype="1" conaffinity="1"/>
+    </body>
 
     <!-- Camera positions（相机位置） -->
     <camera name="overview" pos="0 9 20" xyaxes="1 0 0 0 1 0" mode="fixed"/>
