@@ -784,10 +784,10 @@
     </body>
 
     <!-- Camera positions（相机位置） -->
-    <camera name="overview" pos="0 9 20" xyaxes="1 0 0 0 1 0" mode="fixed"/>
+    <camera name="overview" pos="0 9 25" xyaxes="1 0 0 0 1 0" mode="fixed"/>
     <camera name="physics_view" pos="-4.25 9 10" xyaxes="0 1 0 -1 0 0" mode="fixed"/>
     <camera name="chemistry_view" pos="4.25 13 12" xyaxes="0 1 0 -1 0 0" mode="fixed"/>
-    <camera name="biology_view" pos="4.75 4 10" xyaxes="0 1 0 -1 0 0" mode="fixed"/>
+    <camera name="biology_view" pos="4.75 4 12" xyaxes="0 1 0 -1 0 0" mode="fixed"/>
   </worldbody>
 
 
