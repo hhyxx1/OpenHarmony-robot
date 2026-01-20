@@ -701,7 +701,7 @@
         <geom name="bio_faucet_spout" type="capsule" pos="0 0.15 0.55" euler="110 0 0" size="0.015 0.08" rgba="0.7 0.7 0.7 1"/>
     </body>
 
-    <!-- Hand dryer above wash basin on west wall：0.3m×0.2m×0.6m（洗手台上方墙面烘手机：0.3m×0.2m×0.6m） -->
+    <!-- Hand dryer above wash basin on west wall：0.3m×0.2m×0.5m（洗手台上方墙面烘手机：0.3m×0.2m×0.5m） -->
     <body name="biology_hand_dryer_body" pos="1.3 3.3 1.6">
         <geom name="bio_hand_dryer_main" type="box" pos="0 0 0" size="0.15 0.1 0.25" rgba="0.95 0.95 0.95 1" contype="0" conaffinity="0"/>
         <geom name="bio_hd_vent" type="box" pos="0.12 0 -0.15" size="0.03 0.08 0.05" rgba="0.2 0.2 0.2 1"/>
@@ -716,7 +716,7 @@
 
     <!-- ========== BIOLOGY LAB: CORE ASEPTIC OPERATION ZONE - CELL / MICROBIOLOGY WORK（生物实验室：核心无菌操作区-细胞/微生物关键操作） ========== -->
 
-    <!-- Class II Biosafety Cabinet: 1.5m×0.8m×2.0m along east wall near south window（II级生物安全柜：1.5m×0.8m×2.0m，东侧墙靠南，紧邻窗户） -->
+    <!-- Class II Biosafety Cabinet: 1.4m×0.8m×2.0m along east wall near south window（II级生物安全柜：1.4m×0.8m×2.0m，东侧墙靠南，紧邻窗户） -->
     <body name="biology_bsc_body" pos="7.8 2.0 1.0">
         <!-- BSC Frame -->
         <geom name="bio_bsc_shell" type="box" pos="0 0 0" size="0.4 0.7 1.0" rgba="0.9 0.9 0.92 1" contype="1" conaffinity="1"/>
@@ -871,7 +871,7 @@
         <geom name="bio_gel_screen" type="box" pos="0 -0.25 0.2" size="0.08 0.02 0.06" rgba="0.5 0.8 0.5 1"/>
     </body>
 
-    <!-- UV spectrophotometer: 0.5m×0.4m×0.6m, right side of gel imaging system（紫外分光光度计：0.5m×0.4m×0.6m，凝胶成像系统右侧） -->
+    <!-- UV spectrophotometer: 0.5m×0.4m×0.4m, right side of gel imaging system（紫外分光光度计：0.5m×0.4m×0.4m，凝胶成像系统右侧） -->
     <body name="biology_uv_spectro_body" pos="4.2 1.0 0.3">
         <geom name="bio_uv_case" type="box" pos="0 0 0" size="0.25 0.2 0.2" rgba="0.8 0.85 0.9 1" contype="1" conaffinity="1"/>
         <geom name="bio_uv_sample" type="box" pos="-0.1 0.05 0.1" size="0.1 0.1 0.12" rgba="0.3 0.3 0.4 1"/>
@@ -887,7 +887,7 @@
         <geom name="bio_water_screen" type="box" pos="0 -0.21 0.3" size="0.1 0.01 0.06" rgba="0.1 0.1 0.8 1"/>
     </body>
 
-    <!-- Ultrasonic cell disruptor: 0.4m×0.3m×0.5m, right side of central table near water system（超声波细胞破碎仪：0.4m×0.3m×0.5m，中央台右侧，靠近纯水机） -->
+    <!-- Ultrasonic cell disruptor: 0.4m×0.3m×0.7m, right side of central table near water system（超声波细胞破碎仪：0.4m×0.3m×0.7m，中央台右侧，靠近纯水机） -->
     <body name="biology_ultrasonic_disruptor_body" pos="5.2 4.0 1.0">
         <geom name="bio_sonic_gen" type="box" pos="0 0 -0.1" size="0.2 0.15 0.15" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
         <geom name="bio_sonic_box" type="box" pos="0 0 0.2" size="0.15 0.15 0.25" rgba="0.8 0.8 0.8 0.5"/>
