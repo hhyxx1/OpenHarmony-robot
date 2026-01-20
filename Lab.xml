@@ -71,46 +71,81 @@
 
     <!-- Main experiment table: 3m×1.2m×0.8m, centered, longitudinal placement（主实验台：3m×1.2m×0.8m） -->
     <body name="physics_main_table_body" pos="-4.25 9 0.4">
-        <geom name="physics_main_table" type="box" pos="0 0 0" size="0.6 1.5 0.4" rgba="0.4 0.4 0.4 1" contype="1" conaffinity="1"/>
-        <geom name="physics_main_table_top" type="box" pos="0 0 0.42" size="0.61 1.51 0.02" rgba="0.3 0.3 0.3 1" contype="1" conaffinity="1"/>
+        <!-- Table Top -->
+        <geom name="physics_main_table_top" type="box" pos="0 0 0.415" size="0.61 1.51 0.025" rgba="0.3 0.3 0.3 1" contype="1" conaffinity="1"/>
+        <!-- Legs -->
+        <geom name="phys_table_leg_1" type="cylinder" pos="0.5 1.4 -0.005" size="0.05 0.395" rgba="0.4 0.4 0.4 1"/>
+        <geom name="phys_table_leg_2" type="cylinder" pos="0.5 -1.4 -0.005" size="0.05 0.395" rgba="0.4 0.4 0.4 1"/>
+        <geom name="phys_table_leg_3" type="cylinder" pos="-0.5 1.4 -0.005" size="0.05 0.395" rgba="0.4 0.4 0.4 1"/>
+        <geom name="phys_table_leg_4" type="cylinder" pos="-0.5 -1.4 -0.005" size="0.05 0.395" rgba="0.4 0.4 0.4 1"/>
     </body>
 
     <!-- Core equipment on main table（主表上的核心设备） -->
     <!-- Oscilloscope（示波器） -->
     <body name="oscilloscope_body" pos="-4.25 7.8 0.94">
         <freejoint/>
-        <geom name="oscilloscope" type="box" pos="0 0 0" size="0.15 0.2 0.1" rgba="0.2 0.2 0.2 1" contype="1" conaffinity="1"/>
-        <geom name="oscilloscope_screen" type="box" pos="0 -0.05 0.05" size="0.12 0.01 0.08" rgba="0.1 0.3 0.2 1" contype="0" conaffinity="0"/>
+        <!-- Main Case -->
+        <geom name="oscilloscope_case" type="box" pos="0 0 0" size="0.15 0.2 0.1" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
+        <!-- Screen -->
+        <geom name="oscilloscope_screen" type="box" pos="-0.04 -0.2 0.02" size="0.06 0.005 0.05" rgba="0.1 0.4 0.2 1" contype="0" conaffinity="0"/>
+        <!-- Control Knobs -->
+        <geom name="osc_knob_1" type="cylinder" pos="0.08 -0.2 0.05" size="0.015 0.01" euler="90 0 0" rgba="0.1 0.1 0.1 1"/>
+        <geom name="osc_knob_2" type="cylinder" pos="0.08 -0.2 0.0" size="0.015 0.01" euler="90 0 0" rgba="0.1 0.1 0.1 1"/>
+        <geom name="osc_knob_3" type="cylinder" pos="0.08 -0.2 -0.05" size="0.015 0.01" euler="90 0 0" rgba="0.1 0.1 0.1 1"/>
+        <!-- Handle -->
+        <geom name="osc_handle_top" type="box" pos="0 0 0.1" size="0.1 0.02 0.01" rgba="0.2 0.2 0.2 1"/>
+        <geom name="osc_handle_left" type="box" pos="-0.1 0 0.08" size="0.01 0.02 0.03" rgba="0.2 0.2 0.2 1"/>
+        <geom name="osc_handle_right" type="box" pos="0.1 0 0.08" size="0.01 0.02 0.03" rgba="0.2 0.2 0.2 1"/>
     </body>
 
     <!-- Precision mechanics platform（精密力学平台） -->
     <body name="mechanics_platform_body" pos="-4.5 9 0.92">
         <freejoint/>
-        <geom name="mechanics_platform" type="box" pos="0 0 0" size="0.25 0.25 0.08" rgba="0.5 0.5 0.5 1" contype="1" conaffinity="1"/>
+        <!-- Base -->
+        <geom name="mechanics_base" type="box" pos="0 0 -0.04" size="0.25 0.25 0.04" rgba="0.4 0.4 0.4 1" contype="1" conaffinity="1"/>
+        <!-- Top Plate -->
+        <geom name="mechanics_top" type="box" pos="0 0 0.04" size="0.2 0.2 0.02" rgba="0.6 0.6 0.6 1"/>
+        <!-- Supports -->
+        <geom name="mech_post_1" type="cylinder" pos="0.15 0.15 0" size="0.02 0.04" rgba="0.3 0.3 0.3 1"/>
+        <geom name="mech_post_2" type="cylinder" pos="0.15 -0.15 0" size="0.02 0.04" rgba="0.3 0.3 0.3 1"/>
+        <geom name="mech_post_3" type="cylinder" pos="-0.15 0.15 0" size="0.02 0.04" rgba="0.3 0.3 0.3 1"/>
+        <geom name="mech_post_4" type="cylinder" pos="-0.15 -0.15 0" size="0.02 0.04" rgba="0.3 0.3 0.3 1"/>
     </body>
 
     <!-- Resistor box / power supply（电源供应器/电阻箱） -->
     <body name="power_supply_body" pos="-3.9 9 0.92">
         <freejoint/>
-        <geom name="power_supply" type="box" pos="0 0 0" size="0.12 0.15 0.08" rgba="0.3 0.3 0.35 1" contype="1" conaffinity="1"/>
-        <geom name="power_display" type="box" pos="0 -0.12 0.05" size="0.08 0.01 0.04" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0"/>
+        <!-- Main Case -->
+        <geom name="power_supply_case" type="box" pos="0 0 0" size="0.12 0.15 0.08" rgba="0.85 0.85 0.8 1" contype="1" conaffinity="1"/>
+        <!-- Display -->
+        <geom name="power_display" type="box" pos="0 -0.15 0.03" size="0.06 0.005 0.02" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0"/>
+        <!-- Terminals & Knobs -->
+        <geom name="ps_term_red" type="cylinder" pos="-0.05 -0.15 -0.04" size="0.01 0.015" euler="90 0 0" rgba="0.9 0.1 0.1 1"/>
+        <geom name="ps_term_black" type="cylinder" pos="0.05 -0.15 -0.04" size="0.01 0.015" euler="90 0 0" rgba="0.1 0.1 0.1 1"/>
+        <geom name="ps_knob" type="cylinder" pos="0 -0.15 -0.04" size="0.02 0.01" euler="90 0 0" rgba="0.2 0.2 0.2 1"/>
     </body>
 
     <!-- Laser source（激光源） -->
     <body name="laser_source_body" pos="-4.25 10.2 0.88">
         <freejoint/>
-        <geom name="laser_mount" type="box" pos="0 0 0" size="0.08 0.08 0.04" rgba="0.3 0.3 0.3 1" contype="1" conaffinity="1"/>
-        <geom name="laser_source" type="cylinder" pos="0 0 0.08" size="0.05 0.08" rgba="0.6 0.1 0.1 1" contype="1" conaffinity="1"/>
+        <!-- Mount -->
+        <geom name="laser_mount" type="box" pos="0 0 0" size="0.08 0.08 0.04" rgba="0.2 0.2 0.2 1" contype="1" conaffinity="1"/>
+        <!-- Laser Tube (Horizontal) -->
+        <geom name="laser_tube" type="cylinder" pos="0 0 0.09" size="0.04 0.15" euler="90 0 0" rgba="0.7 0.2 0.2 1" contype="1" conaffinity="1"/>
+        <!-- Aperture -->
+        <geom name="laser_aperture" type="cylinder" pos="0 -0.15 0.09" size="0.005 0.01" euler="90 0 0" rgba="0 0 0 1"/>
     </body>
 
     <!-- Data acquisition sensors（数据采集传感器） -->
     <body name="sensor_1_body" pos="-4.6 8.2 0.90">
         <freejoint/>
-        <geom name="sensor_1" type="cylinder" pos="0 0 0" size="0.03 0.06" rgba="0.2 0.4 0.6 1" contype="1" conaffinity="1"/>
+        <geom name="sensor_1_case" type="box" pos="0 0 0" size="0.03 0.03 0.06" rgba="0.2 0.4 0.6 1" contype="1" conaffinity="1"/>
+        <geom name="sensor_1_probe" type="cylinder" pos="0 0 -0.06" size="0.005 0.04" rgba="0.8 0.8 0.8 1"/>
     </body>
     <body name="sensor_2_body" pos="-3.9 8.2 0.90">
         <freejoint/>
-        <geom name="sensor_2" type="cylinder" pos="0 0 0" size="0.03 0.06" rgba="0.2 0.4 0.6 1" contype="1" conaffinity="1"/>
+        <geom name="sensor_2_case" type="box" pos="0 0 0" size="0.03 0.03 0.06" rgba="0.2 0.4 0.6 1" contype="1" conaffinity="1"/>
+        <geom name="sensor_2_probe" type="cylinder" pos="0 0 -0.06" size="0.005 0.04" rgba="0.8 0.8 0.8 1"/>
     </body>
 
     <!-- Instrument storage cabinets: 2 units (1.0m×0.5m×2.0m), along 6m wall（仪器储物柜：2个单元（1.0m×0.5m×2.0m），沿6米墙布置） -->
@@ -128,33 +163,67 @@
 
     <!-- Auxiliary work table: 1.5m×0.6m×0.8m, along middle section of 8m wall（辅助工作台：1.5m×0.6m×0.8m，沿8米墙中段布置） -->
     <body name="physics_aux_table_body" pos="-6.95 9 0.4">
-        <geom name="physics_aux_table" type="box" pos="0 0 0" size="0.3 0.75 0.4" rgba="0.45 0.45 0.45 1" contype="1" conaffinity="1"/>
-        <geom name="physics_aux_table_top" type="box" pos="0 0 0.42" size="0.31 0.76 0.02" rgba="0.35 0.35 0.35 1" contype="1" conaffinity="1"/>
+        <!-- Table Top -->
+        <geom name="physics_aux_table_top" type="box" pos="0 0 0.415" size="0.31 0.76 0.025" rgba="0.35 0.35 0.35 1" contype="1" conaffinity="1"/>
+        <!-- Legs -->
+        <geom name="aux_table_leg_1" type="cylinder" pos="0.25 0.7 -0.005" size="0.04 0.395" rgba="0.45 0.45 0.45 1"/>
+        <geom name="aux_table_leg_2" type="cylinder" pos="0.25 -0.7 -0.005" size="0.04 0.395" rgba="0.45 0.45 0.45 1"/>
+        <geom name="aux_table_leg_3" type="cylinder" pos="-0.25 0.7 -0.005" size="0.04 0.395" rgba="0.45 0.45 0.45 1"/>
+        <geom name="aux_table_leg_4" type="cylinder" pos="-0.25 -0.7 -0.005" size="0.04 0.395" rgba="0.45 0.45 0.45 1"/>
     </body>
 
     <!-- Small tools on auxiliary table（辅助台上的小工具） -->
     <body name="aux_tool_box_body" pos="-6.95 8.5 0.89">
         <freejoint/>
-        <geom name="aux_tool_box" type="box" pos="0 0 0" size="0.15 0.1 0.05" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
+        <!-- Box Body -->
+        <geom name="aux_tool_box" type="box" pos="0 0 0" size="0.15 0.1 0.05" rgba="0.2 0.3 0.4 1" contype="1" conaffinity="1"/>
+        <!-- Handle -->
+        <geom name="tool_box_handle" type="box" pos="0 0 0.06" size="0.1 0.01 0.01" rgba="0.1 0.1 0.1 1"/>
+        <geom name="tool_box_handle_l" type="box" pos="-0.1 0 0.055" size="0.01 0.01 0.015" rgba="0.1 0.1 0.1 1"/>
+        <geom name="tool_box_handle_r" type="box" pos="0.1 0 0.055" size="0.01 0.01 0.015" rgba="0.1 0.1 0.1 1"/>
+        <!-- Latches -->
+        <geom name="tool_box_latch_1" type="box" pos="-0.05 -0.1 0" size="0.01 0.005 0.02" rgba="0.8 0.8 0.8 1"/>
+        <geom name="tool_box_latch_2" type="box" pos="0.05 -0.1 0" size="0.01 0.005 0.02" rgba="0.8 0.8 0.8 1"/>
     </body>
     <body name="aux_notebook_body" pos="-6.95 9.5 0.85">
         <freejoint/>
-        <geom name="aux_notebook" type="box" pos="0 0 0" size="0.12 0.15 0.01" rgba="0.9 0.9 0.8 1" contype="1" conaffinity="1"/>
+        <!-- Cover -->
+        <geom name="aux_notebook_cover" type="box" pos="0 0 0" size="0.12 0.15 0.01" rgba="0.1 0.2 0.5 1" contype="1" conaffinity="1"/>
+        <!-- Pages -->
+        <geom name="aux_notebook_pages" type="box" pos="0.01 0 0" size="0.11 0.145 0.011" rgba="0.95 0.95 0.9 1" contype="0" conaffinity="0"/>
+        <!-- Spine -->
+        <geom name="aux_notebook_spine" type="cylinder" pos="-0.12 0 0" size="0.012 0.15" euler="90 0 0" rgba="0.1 0.1 0.1 1"/>
     </body>
 
     <!-- Supporting facilities（配套设施） -->
     <!-- First aid kit in corner（角落的急救箱） -->
     <body name="first_aid_kit_body" pos="-7.0 5.5 0.25">
         <freejoint/>
-        <geom name="first_aid_kit" type="box" pos="0 0 0" size="0.15 0.1 0.15" rgba="0.9 0.1 0.1 1" contype="1" conaffinity="1"/>
-        <geom name="first_aid_cross" type="box" pos="0.01 0.1 0" size="0.02 0.05 0.08" rgba="1 1 1 1" contype="0" conaffinity="0"/>
+        <!-- Case -->
+        <geom name="first_aid_case" type="box" pos="0 0 0" size="0.15 0.1 0.15" rgba="0.9 0.1 0.1 1" contype="1" conaffinity="1"/>
+        <!-- Handle -->
+        <geom name="first_aid_handle" type="cylinder" pos="0 0 0.15" size="0.01 0.06" euler="90 0 0" rgba="0.8 0.8 0.8 1"/>
+        <!-- Cross -->
+        <geom name="fa_cross_v" type="box" pos="0 0.1 0" size="0.04 0.005 0.08" rgba="1 1 1 1" contype="0" conaffinity="0"/>
+        <geom name="fa_cross_h" type="box" pos="0 0.1 0" size="0.08 0.005 0.04" rgba="1 1 1 1" contype="0" conaffinity="0"/>
+        <!-- Latches -->
+        <geom name="fa_latch_1" type="box" pos="-0.08 0.1 0.12" size="0.01 0.005 0.02" rgba="0.8 0.8 0.8 1"/>
+        <geom name="fa_latch_2" type="box" pos="0.08 0.1 0.12" size="0.01 0.005 0.02" rgba="0.8 0.8 0.8 1"/>
     </body>
 
     <!-- Fire extinguisher in corner（角落的灭火器） -->
     <body name="fire_extinguisher_body" pos="-6.9 5.8 0.4">
         <freejoint/>
-        <geom name="fire_extinguisher" type="cylinder" pos="0 0 0" size="0.08 0.3" rgba="0.8 0.1 0.1 1" contype="1" conaffinity="1"/>
-        <geom name="extinguisher_label" type="box" pos="0.05 0 0.1" size="0.02 0.06 0.1" rgba="1 1 1 1" contype="0" conaffinity="0"/>
+        <!-- Main Tank -->
+        <geom name="fire_ext_tank" type="cylinder" pos="0 0 0" size="0.08 0.3" rgba="0.8 0.1 0.1 1" contype="1" conaffinity="1"/>
+        <!-- Top Assembly -->
+        <geom name="fire_ext_neck" type="cylinder" pos="0 0 0.32" size="0.03 0.05" rgba="0.2 0.2 0.2 1"/>
+        <geom name="fire_ext_handle" type="box" pos="-0.04 0 0.38" size="0.04 0.01 0.01" rgba="0.8 0.8 0.8 1"/>
+        <geom name="fire_ext_lever" type="box" pos="-0.04 0 0.35" size="0.04 0.01 0.01" rgba="0.8 0.8 0.8 1"/>
+        <!-- Hose -->
+        <geom name="fire_ext_hose" type="capsule" pos="0.05 0 0.25" size="0.02 0.1" euler="0 45 0" rgba="0.1 0.1 0.1 1"/>
+        <!-- Label -->
+        <geom name="extinguisher_label" type="box" pos="0.08 0 0.1" size="0.002 0.06 0.1" rgba="1 1 1 1" contype="0" conaffinity="0"/>
     </body>
 
     <!-- Power outlet points (visual markers)（电源插座点：视觉标记） -->
@@ -184,10 +253,19 @@
     
     <!-- Main table body with damping layer（主台桌体：防振缓冲层） -->
     <body name="chemistry_main_table_body" pos="4.25 13 0.425">
-    <!-- Damping buffer layer（防振缓冲层） -->
-        <geom name="chemistry_table_base" type="box" pos="0 0 0" size="0.5 2 0.3" rgba="0.2 0.2 0.2 1" contype="1" conaffinity="1"/>
-        <!-- Corrosion-resistant granite top surface（防腐蚀花岗岩台面） -->
+        <!-- Table Top (Granite) -->
         <geom name="chemistry_table_top" type="box" pos="0 0 0.425" size="0.51 2.01 0.025" material="granite_mat" contype="1" conaffinity="1"/>
+        <!-- Frame/Cabinet Base -->
+        <geom name="chem_table_cab_1" type="box" pos="0 1.5 0.1" size="0.45 0.45 0.3" rgba="0.8 0.8 0.8 1"/>
+        <geom name="chem_table_cab_2" type="box" pos="0 -1.5 0.1" size="0.45 0.45 0.3" rgba="0.8 0.8 0.8 1"/>
+        <geom name="chem_table_cab_3" type="box" pos="0 0 0.1" size="0.45 0.45 0.3" rgba="0.8 0.8 0.8 1"/>
+        <!-- Connecting Beams -->
+        <geom name="chem_table_beam" type="box" pos="0 0 0.38" size="0.4 1.8 0.02" rgba="0.3 0.3 0.3 1"/>
+        <!-- Damping Feet -->
+        <geom name="chem_foot_1" type="cylinder" pos="0.4 1.9 -0.15" size="0.05 0.05" rgba="0.1 0.1 0.1 1"/>
+        <geom name="chem_foot_2" type="cylinder" pos="-0.4 1.9 -0.15" size="0.05 0.05" rgba="0.1 0.1 0.1 1"/>
+        <geom name="chem_foot_3" type="cylinder" pos="0.4 -1.9 -0.15" size="0.05 0.05" rgba="0.1 0.1 0.1 1"/>
+        <geom name="chem_foot_4" type="cylinder" pos="-0.4 -1.9 -0.15" size="0.05 0.05" rgba="0.1 0.1 0.1 1"/>
     </body>
 
     <!-- Organic synthesis zone marker - left half（有机合成区标记-左半部分） -->
@@ -200,6 +278,11 @@
     <body name="chemistry_sink_body" pos="4.25 13 0.425">
         <geom name="chemistry_sink" type="box" pos="0 0 0.15" size="0.25 0.2 0.15" material="sink_mat" contype="1" conaffinity="1"/>
         <geom name="chemistry_sink_rim" type="box" pos="0 0 0.32" size="0.26 0.21 0.01" rgba="0.5 0.5 0.5 1" contype="1" conaffinity="1"/>
+        <!-- Faucet -->
+        <geom name="chem_faucet_v" type="cylinder" pos="0 0.25 0.4" size="0.02 0.15" rgba="0.9 0.9 0.9 1"/>
+        <geom name="chem_faucet_h" type="cylinder" pos="0 0.1 0.55" size="0.015 0.15" euler="90 0 0" rgba="0.9 0.9 0.9 1"/>
+        <geom name="chem_faucet_curve" type="capsule" pos="0 0.175 0.525" euler="108.4 0 0" size="0.015 0.079" rgba="0.9 0.9 0.9 1"/>
+        <geom name="chem_tap_handle" type="box" pos="0.05 0.25 0.35" size="0.01 0.04 0.01" euler="0 45 0" rgba="0.2 0.2 0.8 1"/>
     </body>
 
     <!-- Anti-splash stabilized power outlets (one every 0.8m)（防溅水稳定电源：每0.8m一个） -->
@@ -213,30 +296,35 @@
     <geom name="chemistry_outlet_5" type="box" pos="4.5 14.2 0.4" size="0.04 0.1 0.08" rgba="0.8 0.8 0.8 1" contype="0" conaffinity="0"/>
     <geom name="chemistry_outlet_6" type="box" pos="4.5 15 0.4" size="0.04 0.1 0.08" rgba="0.8 0.8 0.8 1" contype="0" conaffinity="0"/>
 
-    <!-- Precision analysis equipment（精密分析设备） -->
-    <!-- HPLC on anti-vibration table（防振台上的高效液相色谱仪） -->
-    <body name="hplc_body" pos="4.25 11.5 1.18">
+    <!-- Instrument area equipment（仪器区设备） -->
+    <!-- High-performance liquid chromatograph - 1m spacing from prep table（高效液相色谱仪：与前处理台相距1m） -->
+    <body name="hplc_body" pos="4.25 11.5 0.925">
         <freejoint/>
-        <geom name="hplc_main" type="box" pos="0 0 0" size="0.25 0.3 0.3" rgba="0.2 0.2 0.2 1" contype="1" conaffinity="1"/>
-        <geom name="hplc_pump" type="cylinder" pos="0.1 0 0.2" size="0.08 0.15" rgba="0.3 0.3 0.3 1" contype="1" conaffinity="1"/>
-        <geom name="hplc_detector" type="box" pos="-0.08 0.15 0.15" size="0.1 0.1 0.2" rgba="0.15 0.15 0.2 1" contype="1" conaffinity="1"/>
+        <!-- Stack: Pump, Autosampler, Column Oven, Detector -->
+        <geom name="hplc_base_unit" type="box" pos="0 0 0" size="0.25 0.3 0.05" rgba="0.8 0.8 0.9 1"/>
+        <geom name="hplc_pump_mod" type="box" pos="0 0 0.1" size="0.25 0.3 0.05" rgba="0.9 0.9 0.95 1"/>
+        <geom name="hplc_screen" type="box" pos="0 -0.30 0.2" size="0.1 0.01 0.05" rgba="0.2 0.3 0.2 1"/> 
+        <geom name="hplc_sampler" type="box" pos="0 0 0.2" size="0.25 0.3 0.05" rgba="0.9 0.9 0.95 1"/>
+        <geom name="hplc_detector" type="box" pos="0 0 0.3" size="0.25 0.3 0.05" rgba="0.9 0.9 0.95 1"/>
+        <!-- Solvent Bottles -->
+        <geom name="solv_bottle_1" type="cylinder" pos="-0.15 0 0.45" size="0.04 0.1" rgba="0.6 0.4 0.2 0.5"/>
+        <geom name="solv_bottle_2" type="cylinder" pos="0 0 0.45" size="0.04 0.1" rgba="0.6 0.4 0.2 0.5"/>
+        <geom name="solv_bottle_3" type="cylinder" pos="0.15 0 0.45" size="0.04 0.1" rgba="0.6 0.4 0.2 0.5"/>
     </body>
 
-    <!-- UV-Vis spectrophotometer on anti-vibration table（防振台上的紫外-可见分光光度计） -->
-    <body name="uvvis_body" pos="4.25 14.5 1.13">
+    <!-- UV-Vis spectrophotometer - 3m spacing from HPLC（紫外分光光度计：与色谱仪相距3m） -->
+    <body name="uvvis_body" pos="4.25 14.5 1.025">
         <freejoint/>
-        <geom name="uvvis_main" type="box" pos="0 0 0" size="0.22 0.28 0.25" rgba="0.25 0.25 0.25 1" contype="1" conaffinity="1"/>
-        <geom name="uvvis_display" type="box" pos="0 -0.15 0.1" size="0.2 0.05 0.15" rgba="0.1 0.2 0.3 1" contype="1" conaffinity="1"/>
-        <geom name="uvvis_cuvette_holder" type="box" pos="0 0.12 -0.05" size="0.15 0.12 0.08" rgba="0.4 0.4 0.4 1" contype="1" conaffinity="1"/>
+        <!-- Main Body -->
+        <geom name="uvvis_case" type="box" pos="0 0 0" size="0.22 0.28 0.15" rgba="0.9 0.9 0.95 1" contype="1" conaffinity="1"/>
+        <!-- Sample Chamber Lid -->
+        <geom name="uvvis_lid" type="box" pos="0.1 0.1 0.16" size="0.1 0.15 0.01" euler="0 -20 0" rgba="0.3 0.3 0.3 0.5"/>
+        <!-- Screen/Keypad -->
+        <geom name="uvvis_screen" type="box" pos="-0.15 -0.2 0.1" size="0.05 0.08 0.05" euler="30 0 0" rgba="0.2 0.2 0.2 1"/>
+        <!-- Cuvette Holder inside (visual) -->
+        <geom name="uvvis_holder" type="box" pos="0.1 0.1 0.1" size="0.05 0.05 0.04" rgba="0.1 0.1 0.1 1"/>
     </body>
 
-    <!-- Workstation PC below east side cabinet（东侧柜下方的工作站电脑） -->
-    <body name="workstation_pc_body" pos="6.5 13 1.18">
-        <freejoint/>
-        <geom name="pc_tower" type="box" pos="0 0 0" size="0.12 0.18 0.3" rgba="0.1 0.1 0.1 1" contype="1" conaffinity="1"/>
-        <geom name="pc_screen" type="box" pos="0.1 0 0.1" size="0.15 0.03 0.18" rgba="0.15 0.15 0.2 1" contype="1" conaffinity="1"/>
-    </body>
-    
     <!-- Data workstation: along south wall, 1.2m×0.8m×0.75m, with PC, printer and data management system（数据工作站：靠最空的一面墙-南墙，配电脑、打印机和实验数据管理系统） -->
     <body name="chemistry_data_workstation_body" pos="3.5 8.4 0.375">
         <!-- Workstation desk（工作站桌体） -->
@@ -254,55 +342,95 @@
     <!-- Ultrasonic cleaner at west side table - south position（西侧台南位置的超声清洗机） -->
     <body name="ultrasonic_cleaner_body" pos="2.0 9.5 1.13">
         <freejoint/>
-        <geom name="ultrasonic_body" type="box" pos="0 0 0" size="0.25 0.3 0.25" rgba="0.4 0.4 0.4 1" contype="1" conaffinity="1"/>
-        <geom name="ultrasonic_tank" type="box" pos="0 0 -0.08" size="0.23 0.28 0.15" rgba="0.5 0.5 0.5 1" contype="1" conaffinity="1"/>
-        <geom name="ultrasonic_control" type="box" pos="0 -0.15 0.1" size="0.2 0.08 0.12" rgba="0.3 0.3 0.3 1" contype="0" conaffinity="0"/>
+        <!-- Outer Shell -->
+        <geom name="ultra_shell" type="box" pos="0 0 0" size="0.25 0.3 0.2" rgba="0.9 0.9 0.9 1" contype="1" conaffinity="1"/>
+        <!-- Tank Cavity (Visual) -->
+        <geom name="ultra_tank_inner" type="box" pos="0 0 0.05" size="0.2 0.25 0.15" rgba="0.7 0.7 0.7 1"/>
+        <!-- Lid -->
+        <geom name="ultra_lid" type="box" pos="0.26 0 0.2" size="0.01 0.28 0.18" euler="0 10 0" rgba="0.2 0.4 0.8 0.5"/>
+        <!-- Control Panel -->
+        <geom name="ultra_controls" type="box" pos="-0.25 0 -0.1" size="0.01 0.28 0.08" rgba="0.2 0.2 0.2 1"/>
     </body>
 
     <!-- High-speed centrifuge - 0.5m spacing from ultrasonic cleaner（高速离心机：与超声清洗机相距0.5m） -->
-    <body name="centrifuge_body" pos="2.0 10.25 1.18">
+    <body name="centrifuge_body" pos="2.0 10.25 1.075">
         <freejoint/>
-        <geom name="centrifuge_main" type="cylinder" pos="0 0 0" size="0.15 0.3" rgba="0.35 0.35 0.35 1" contype="1" conaffinity="1"/>
-        <geom name="centrifuge_rotor" type="cylinder" pos="0 0 -0.05" size="0.13 0.08" rgba="0.25 0.25 0.25 1" contype="1" conaffinity="1"/>
-        <geom name="centrifuge_lid" type="cylinder" pos="0 0 0.32" size="0.16 0.05" rgba="0.4 0.4 0.4 1" contype="1" conaffinity="1"/>
+        <!-- Main Body -->
+        <geom name="centrifuge_case" type="cylinder" pos="0 0 0" size="0.2 0.2" rgba="0.9 0.9 0.95 1" contype="1" conaffinity="1"/>
+        <!-- Beveled Top -->
+        <geom name="centrifuge_top_bevel" type="cylinder" pos="0 0 0.15" size="0.18 0.05" rgba="0.8 0.8 0.85 1"/>
+        <!-- Lid (Closed) -->
+        <geom name="centrifuge_lid_closed" type="cylinder" pos="0 0 0.2" size="0.16 0.02" rgba="0.2 0.2 0.2 0.2"/>
+        <!-- Rotor Axis -->
+        <geom name="centrifuge_axis" type="cylinder" pos="0 0 0.1" size="0.02 0.1" rgba="0.1 0.1 0.1 1"/> 
+        <!-- Controls -->
+        <geom name="cent_button" type="cylinder" pos="0.18 0 0.1" size="0.02 0.01" euler="0 90 0" rgba="0.1 0.8 0.1 1"/>
     </body>
 
     <!-- Vacuum drying box - 0.5m spacing from centrifuge（真空干燥箱：与离心机相距0.5m） -->
-    <body name="vacuum_dryer_body" pos="2.0 11.0 1.18">
+    <body name="vacuum_dryer_body" pos="2.0 11.0 1.175">
         <freejoint/>
-        <geom name="vacuum_dryer_main" type="box" pos="0 0 0" size="0.28 0.3 0.3" rgba="0.4 0.4 0.4 1" contype="1" conaffinity="1"/>
-        <geom name="vacuum_dryer_door" type="box" pos="0.15 0 0" size="0.02 0.28 0.28" rgba="0.3 0.3 0.3 1" contype="1" conaffinity="1"/>
-        <geom name="vacuum_gauge" type="cylinder" pos="-0.12 0.12 0.1" size="0.04 0.05" rgba="0.2 0.2 0.2 1" contype="1" conaffinity="1"/>
+        <!-- Outer Box -->
+        <geom name="vac_dryer_case" type="box" pos="0 0 0" size="0.28 0.3 0.3" rgba="0.85 0.85 0.8 1" contype="1" conaffinity="1"/>
+        <!-- Window Frame -->
+        <geom name="vac_door_frame" type="box" pos="0.28 0 0" size="0.01 0.28 0.28" rgba="0.3 0.3 0.3 1"/>
+        <!-- Glass Window -->
+        <geom name="vac_door_glass" type="box" pos="0.28 0 0" size="0.01 0.2 0.2" rgba="0.1 0.4 0.6 0.3"/>
+        <!-- Handle -->
+        <geom name="vac_handle" type="box" pos="0.32 0.22 0" size="0.02 0.02 0.05" rgba="0.1 0.1 0.1 1"/>
+        <!-- Gauge -->
+        <geom name="vac_gauge_dial" type="cylinder" pos="0.15 0.3 0.2" size="0.04 0.01" euler="90 0 0" rgba="1 1 1 1"/>
+        <geom name="vac_gauge_rim" type="cylinder" pos="0.15 0.3 0.2" size="0.045 0.005" euler="90 0 0" rgba="0.1 0.1 0.1 1"/>
     </body>
 
     <!-- Ultra-pure water system - 0.5m spacing from dryer（超纯水系统：与干燥箱相距0.5m） -->
-    <body name="ultrapure_water_body" pos="2.0 11.75 1.28">
+    <body name="ultrapure_water_body" pos="2.0 11.75 1.275">
         <freejoint/>
-        <geom name="water_system_main" type="box" pos="0 0 0" size="0.25 0.32 0.4" rgba="0.4 0.45 0.5 1" contype="1" conaffinity="1"/>
-        <geom name="water_tank" type="cylinder" pos="0 0.1 -0.1" size="0.1 0.15" rgba="0.5 0.55 0.6 1" contype="1" conaffinity="1"/>
-        <geom name="water_display" type="box" pos="-0.1 0 0.15" size="0.08 0.12 0.1" rgba="0.2 0.3 0.3 1" contype="0" conaffinity="0"/>
-        <geom name="water_outlet" type="cylinder" pos="0.12 0.15 0.15" size="0.02 0.08" rgba="0.6 0.6 0.6 1" contype="1" conaffinity="1"/>
+        <!-- Main Unit -->
+        <geom name="water_system_case" type="box" pos="0 0 0" size="0.2 0.32 0.4" rgba="0.9 0.9 0.95 1" contype="1" conaffinity="1"/>
+        <!-- Front Panel detail -->
+        <geom name="water_panel_blue" type="box" pos="-0.1 0 0" size="0.1 0.32 0.38" rgba="0.1 0.3 0.8 1" contype="0" conaffinity="0"/>
+        <geom name="water_screen" type="box" pos="-0.21 0 0.2" size="0.01 0.1 0.08" rgba="0.1 0.1 0.1 1"/>
+        <!-- Cartridges visible -->
+        <geom name="cartridge_1" type="cylinder" pos="0.1 0.15 -0.1" size="0.06 0.25" rgba="1 1 1 0.8"/>
+        <geom name="cartridge_2" type="cylinder" pos="0.1 -0.15 -0.1" size="0.06 0.25" rgba="1 1 1 0.8"/>
+        <!-- Dispenser Arm -->
+        <geom name="water_dispenser_arm" type="capsule" pos="-0.2 0 -0.25" euler="0 -116.6 0" size="0.02 0.112" rgba="0.7 0.7 0.7 1"/>
+        <geom name="water_nozzle" type="cylinder" pos="-0.3 0 -0.32" size="0.015 0.02" rgba="1 1 1 1"/>
     </body>
 
     <!-- Chemistry lab functional side tables - along long walls（化学实验室功能边台：沿长墙方向） -->
     <!-- Side table 1: Sample preparation station (west wall) - 4.5m×0.7m×0.85m（边台1：样品制备台（西墙），4.5m×0.7m×0.85m） -->
     <body name="chemistry_side_table_1_body" pos="2.0 10.5 0.425">
-        <!-- Table base structure - 4.5m along Y-axis（桌体基座结构：沿Y轴4.5m） -->
-        <geom name="chemistry_side_table_1" type="box" pos="0 0 0" size="0.35 2.25 0.4" rgba="0.5 0.5 0.5 1" contype="1" conaffinity="1"/>
+        <!-- Granite Top -->
         <geom name="chemistry_side_table_1_top" type="box" pos="0 0 0.425" size="0.36 2.26 0.025" material="granite_mat" contype="1" conaffinity="1"/>
+        <!-- Modular Cabinets below -->
+        <geom name="side_cab_1a" type="box" pos="0 1.5 0" size="0.3 0.7 0.4" rgba="0.8 0.8 0.8 1"/>
+        <geom name="side_cab_1b" type="box" pos="0 0 0" size="0.3 0.7 0.4" rgba="0.8 0.8 0.8 1"/> 
+        <geom name="side_cab_1c" type="box" pos="0 -1.5 0" size="0.3 0.7 0.4" rgba="0.8 0.8 0.8 1"/>
+        <!-- Toe Kick (Recessed base) -->
+        <geom name="side_toe_kick_1" type="box" pos="-0.05 0 -0.38" size="0.25 2.2 0.02" rgba="0.2 0.2 0.2 1"/>
+        <!-- Handles -->
+        <geom name="side_handle_1a" type="box" pos="0.31 1.5 0.2" size="0.01 0.1 0.01" rgba="0.6 0.6 0.6 1"/>
+        <geom name="side_handle_1b" type="box" pos="0.31 0 0.2" size="0.01 0.1 0.01" rgba="0.6 0.6 0.6 1"/>
+        <geom name="side_handle_1c" type="box" pos="0.31 -1.5 0.2" size="0.01 0.1 0.01" rgba="0.6 0.6 0.6 1"/>
     </body>
 
     <!-- Adjustable reagent rack on sample prep table - height 0.6-1m（可升降试剂架：高度0.6-1m） -->
     <body name="reagent_rack_body" pos="1.5 10.5 0.85">
         <freejoint/>
-        <!-- Rack frame（架体框架） -->
-        <geom name="reagent_rack_frame" type="box" pos="0 0 0" size="0.15 0.5 0.25" rgba="0.6 0.6 0.6 1" contype="1" conaffinity="1"/>
-        <!-- Rack shelves - 3 units（试剂架搁板：3个） -->
-        <geom name="reagent_shelf_1" type="box" pos="0 0 -0.08" size="0.16 0.51 0.01" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
-        <geom name="reagent_shelf_2" type="box" pos="0 0 0" size="0.16 0.51 0.01" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
-        <geom name="reagent_shelf_3" type="box" pos="0 0 0.08" size="0.16 0.51 0.01" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
+        <!-- Vertical Frames -->
+        <geom name="rack_frame_l" type="box" pos="0 0.48 0" size="0.14 0.02 0.3" rgba="0.6 0.6 0.65 1" contype="1" conaffinity="1"/>
+        <geom name="rack_frame_r" type="box" pos="0 -0.48 0" size="0.14 0.02 0.3" rgba="0.6 0.6 0.65 1" contype="1" conaffinity="1"/>
+        <!-- Shelves (Thinner) -->
+        <geom name="rack_shelf_1" type="box" pos="0 0 -0.15" size="0.13 0.46 0.005" rgba="0.9 0.9 0.9 0.5"/>
+        <geom name="rack_shelf_2" type="box" pos="0 0 0.0" size="0.13 0.46 0.005" rgba="0.9 0.9 0.9 0.5"/>
+        <geom name="rack_shelf_3" type="box" pos="0 0 0.15" size="0.13 0.46 0.005" rgba="0.9 0.9 0.9 0.5"/>
+        <!-- Reagent Bottles (Visual) -->
+        <geom name="bottle_group_1" type="cylinder" pos="0 0.2 0.05" size="0.03 0.04" rgba="0.6 0.3 0.1 1"/>
+        <geom name="bottle_group_2" type="cylinder" pos="0 -0.2 0.05" size="0.03 0.04" rgba="0.6 0.3 0.1 1"/>
+        <geom name="bottle_group_3" type="cylinder" pos="0 0 0.2" size="0.03 0.04" rgba="0.2 0.3 0.6 1"/>
     </body>
-
     <!-- Power outlets on sample prep table（样品制备台上的电源插座） -->
     <geom name="sample_prep_outlet_1" type="box" pos="1.5 9 0.5" size="0.04 0.1 0.08" rgba="0.8 0.8 0.8 1" contype="0" conaffinity="0"/>
     <geom name="sample_prep_outlet_2" type="box" pos="1.5 10.5 0.5" size="0.04 0.1 0.08" rgba="0.8 0.8 0.8 1" contype="0" conaffinity="0"/>
@@ -310,9 +438,18 @@
 
     <!-- Side table 2: Instrument support station (east wall) - 4.5m×0.7m×0.85m（边台2：仪器支持台（东墙），4.5m×0.7m×0.85m） -->
     <body name="chemistry_side_table_2_body" pos="6.5 13 0.425">
-        <!-- Table base structure - 4.5m along Y-axis（桌体基座结构：沿Y轴4.5m） -->
-        <geom name="chemistry_side_table_2" type="box" pos="0 0 0" size="0.35 2.25 0.4" rgba="0.5 0.5 0.5 1" contype="1" conaffinity="1"/>
+        <!-- Granite Top -->
         <geom name="chemistry_side_table_2_top" type="box" pos="0 0 0.425" size="0.36 2.26 0.025" material="granite_mat" contype="1" conaffinity="1"/>
+        <!-- Modular Cabinets below -->
+        <geom name="side_cab_2a" type="box" pos="0 1.5 0" size="0.3 0.7 0.4" rgba="0.8 0.8 0.8 1"/>
+        <geom name="side_cab_2b" type="box" pos="0 0 0" size="0.3 0.7 0.4" rgba="0.8 0.8 0.8 1"/> 
+        <geom name="side_cab_2c" type="box" pos="0 -1.5 0" size="0.3 0.7 0.4" rgba="0.8 0.8 0.8 1"/>
+        <!-- Toe Kick (Recessed base) -->
+        <geom name="side_toe_kick_2" type="box" pos="0.05 0 -0.38" size="0.25 2.2 0.02" rgba="0.2 0.2 0.2 1"/>
+        <!-- Handles (Facing West) -->
+        <geom name="side_handle_2a" type="box" pos="-0.31 1.5 0.2" size="0.01 0.1 0.01" rgba="0.6 0.6 0.6 1"/>
+        <geom name="side_handle_2b" type="box" pos="-0.31 0 0.2" size="0.01 0.1 0.01" rgba="0.6 0.6 0.6 1"/>
+        <geom name="side_handle_2c" type="box" pos="-0.31 -1.5 0.2" size="0.01 0.1 0.01" rgba="0.6 0.6 0.6 1"/>
     </body>
 
     <!-- Equipment power outlets on instrument table - red color（仪器台上的电源插座：红色） -->
@@ -558,197 +695,281 @@
 
     <!-- Sensor wash basin: 0.6m×0.5m×0.8m, inside door right side（感应洗手台：0.6m×0.5m×0.8m，门内右侧） -->
     <body name="biology_washbasin_body" pos="1.8 3.0 0.4">
-      <geom name="biology_washbasin" type="box" pos="0 0 0" size="0.3 0.25 0.4" material="sink_mat" contype="1" conaffinity="1"/>
+        <geom name="bio_sink_cabinet" type="box" pos="0 0 0" size="0.3 0.25 0.4" rgba="0.9 0.9 0.9 1" contype="1" conaffinity="1"/>
+        <geom name="bio_sink_basin" type="box" pos="0 0 0.35" size="0.25 0.2 0.05" rgba="0.8 0.8 0.8 1" contype="1" conaffinity="1"/>
+        <geom name="bio_faucet_body" type="cylinder" pos="0 0.22 0.45" size="0.02 0.1" rgba="0.7 0.7 0.7 1"/>
+        <geom name="bio_faucet_spout" type="capsule" pos="0 0.15 0.55" euler="110 0 0" size="0.015 0.08" rgba="0.7 0.7 0.7 1"/>
     </body>
 
     <!-- Hand dryer above wash basin on west wall：0.3m×0.2m×0.6m（洗手台上方墙面烘手机：0.3m×0.2m×0.6m） -->
-    <geom name="biology_hand_dryer" type="box" pos="1.3 3.3 1.6" size="0.15 0.1 0.3" rgba="0.9 0.9 0.9 1" contype="0" conaffinity="0"/>
+    <body name="biology_hand_dryer_body" pos="1.3 3.3 1.6">
+        <geom name="bio_hand_dryer_main" type="box" pos="0 0 0" size="0.15 0.1 0.25" rgba="0.95 0.95 0.95 1" contype="0" conaffinity="0"/>
+        <geom name="bio_hd_vent" type="box" pos="0.12 0 -0.15" size="0.03 0.08 0.05" rgba="0.2 0.2 0.2 1"/>
+    </body>
 
     <!-- Shoe cover dispenser: 0.5m×0.3m×0.4m, inside door left side away from main passage（鞋套机：0.5m×0.3m×0.4m，门内左侧靠角落） -->
     <body name="biology_shoe_cover_body" pos="1.8 4.9 0.2">
-      <geom name="biology_shoe_cover_machine" type="box" pos="0 0 0" size="0.25 0.15 0.2" rgba="0.6 0.6 0.7 1" contype="1" conaffinity="1"/>
+        <geom name="bio_shoe_disp_main" type="box" pos="0 0 0" size="0.25 0.15 0.2" rgba="0.6 0.6 0.7 1" contype="1" conaffinity="1"/>
+        <geom name="bio_shoe_opening" type="box" pos="0 0 0.2" size="0.2 0.1 0.01" rgba="0.1 0.1 0.1 1"/>
+        <geom name="bio_shoe_handle" type="cylinder" pos="0 0.15 0.1" size="0.02 0.2" euler="90 0 0" rgba="0.8 0.8 0.8 1"/>
     </body>
 
     <!-- ========== BIOLOGY LAB: CORE ASEPTIC OPERATION ZONE - CELL / MICROBIOLOGY WORK（生物实验室：核心无菌操作区-细胞/微生物关键操作） ========== -->
 
     <!-- Class II Biosafety Cabinet: 1.5m×0.8m×2.0m along east wall near south window（II级生物安全柜：1.5m×0.8m×2.0m，东侧墙靠南，紧邻窗户） -->
     <body name="biology_bsc_body" pos="7.8 2.0 1.0">
-      <!-- BSC main housing（生物安全柜箱体） -->
-      <geom name="biology_bsc_main" type="box" pos="0 0 0" size="0.4 0.75 1.0" rgba="0.8 0.8 0.85 1" contype="1" conaffinity="1"/>
-      <!-- Front glass sash opening（前挡玻璃开口） -->
-      <geom name="biology_bsc_glass" type="box" pos="-0.41 0 0.4" size="0.02 0.6 0.4" rgba="0.6 0.7 0.9 0.4" contype="0" conaffinity="0"/>
-      <!-- Internal work surface（内部工作台面） -->
-      <geom name="biology_bsc_worktop" type="box" pos="-0.2 0 0.0" size="0.35 0.7 0.05" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
-      <!-- Pipette rack (12-slot) on left side inside BSC（12孔移液器架：生物安全柜内左侧） -->
-      <geom name="biology_pipette_rack" type="box" pos="-0.15 -0.25 0.15" size="0.15 0.1 0.075" rgba="0.6 0.6 0.7 1" contype="1" conaffinity="1"/>
-      <!-- Sterile consumables box on right side inside BSC（无菌耗材盒：生物安全柜内右侧） -->
-      <geom name="biology_consumable_box" type="box" pos="-0.15 0.25 0.12" size="0.2 0.15 0.1" rgba="0.9 0.9 0.9 1" contype="1" conaffinity="1"/>
+        <!-- BSC Frame -->
+        <geom name="bio_bsc_shell" type="box" pos="0 0 0" size="0.4 0.7 1.0" rgba="0.9 0.9 0.92 1" contype="1" conaffinity="1"/>
+        <!-- Front Sash (Sloped) -->
+        <geom name="bio_bsc_glass" type="box" pos="-0.4 0 0.2" size="0.02 0.65 0.4" euler="0 -5 0" rgba="0.6 0.8 0.9 0.3" contype="0" conaffinity="0"/>
+        <!-- Work Surface -->
+        <geom name="bio_bsc_surface" type="box" pos="-0.1 0 -0.1" size="0.3 0.68 0.02" rgba="0.7 0.7 0.7 1"/>
+        <!-- Top Filter Unit -->
+        <geom name="bio_bsc_filter" type="box" pos="0 0 0.8" size="0.38 0.68 0.18" rgba="0.8 0.8 0.85 1"/>
+        <!-- Control Panel -->
+        <geom name="bio_bsc_panel" type="box" pos="-0.4 0 0.7" size="0.02 0.68 0.1" rgba="0.2 0.2 0.25 1"/>
+        <!-- Pipette rack (visual) -->
+        <geom name="bio_pipettes" type="box" pos="-0.2 -0.4 0.1" size="0.05 0.1 0.1" rgba="0.5 0.5 0.6 1"/>
     </body>
 
     <!-- Auxiliary operation table: 1.5m×0.6m×0.8m, parallel to BSC, placed beside it（操作辅助台：1.5m×0.6m×0.8m，平行于生物安全柜摆放） -->
     <body name="biology_aux_table_body" pos="6.0 2.0 0.4">
-      <geom name="biology_aux_table" type="box" pos="0 0 0" size="0.3 0.75 0.4" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
-      <geom name="biology_aux_table_top" type="box" pos="0 0 0.42" size="0.31 0.76 0.02" rgba="0.6 0.6 0.6 1" contype="1" conaffinity="1"/>
+        <geom name="bio_aux_table_cab" type="box" pos="0 0 0" size="0.3 0.75 0.4" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
+        <geom name="bio_aux_table_top" type="box" pos="0 0 0.42" size="0.32 0.76 0.02" rgba="0.6 0.6 0.6 1" contype="1" conaffinity="1"/>
+        <geom name="bio_aux_handle" type="box" pos="-0.31 0 0.2" size="0.01 0.1 0.01" rgba="0.5 0.5 0.5 1"/>
     </body>
 
     <!-- Compact cell counter: 0.3m×0.3m×0.4m at center of auxiliary table（小型细胞计数仪：辅助台中间位置） -->
     <body name="biology_cell_counter_body" pos="6.0 2.0 0.84">
-      <geom name="biology_cell_counter" type="box" pos="0 0 0" size="0.15 0.15 0.2" rgba="0.3 0.3 0.4 1" contype="1" conaffinity="1"/>
+        <geom name="bio_counter_body" type="box" pos="0 0 0" size="0.15 0.15 0.2" rgba="0.3 0.3 0.4 1" contype="1" conaffinity="1"/>
+        <geom name="bio_counter_screen" type="box" pos="-0.15 0 0.05" size="0.01 0.12 0.08" euler="0 -20 0" rgba="0.1 0.1 0.1 1"/>
+        <geom name="bio_counter_slot" type="box" pos="-0.12 0 -0.1" size="0.05 0.08 0.01" rgba="0.2 0.2 0.2 1"/>
     </body>
 
     <!-- Benchtop low-speed centrifuge: 0.4m×0.4m×0.5m at auxiliary table end near BSC（台式低速离心机：辅助台末端靠近生物安全柜） -->
     <body name="biology_aux_centrifuge_body" pos="6.0 2.5 1.1">
-      <geom name="biology_aux_centrifuge" type="cylinder" pos="0 0 0" size="0.2 0.25" rgba="0.5 0.5 0.55 1" contype="1" conaffinity="1"/>
-      <geom name="biology_aux_centrifuge_lid" type="cylinder" pos="0 0 0.27" size="0.21 0.05" rgba="0.6 0.6 0.65 1" contype="1" conaffinity="1"/>
+        <geom name="bio_bench_cent_body" type="box" pos="0 0 0" size="0.2 0.2 0.15" rgba="0.5 0.5 0.55 1" contype="1" conaffinity="1"/>
+        <geom name="bio_bench_cent_lid" type="cylinder" pos="0 0 0.15" size="0.18 0.05" rgba="0.6 0.6 0.65 1"/>
+        <geom name="bio_bench_cent_panel" type="box" pos="-0.2 0 0" size="0.02 0.15 0.05" euler="0 -30 0" rgba="0.2 0.2 0.2 1"/>
     </body>
 
     <!-- ========== BIOLOGY LAB: CULTURE AND STORAGE ZONE - SAMPLE PRESERVATION & INCUBATION（生物实验室：培养与存储区-样品保存与恒温培养） ========== -->
 
     <!-- 37°C incubator: 0.6m×0.5m×0.8m on east wall north segment, just north of BSC（恒温培养箱37℃：东侧墙北段，安全柜北侧） -->
     <body name="biology_incubator_37_body" pos="7.8 4.0 0.4">
-      <geom name="biology_incubator_37_main" type="box" pos="0 0 0" size="0.3 0.25 0.4" rgba="0.85 0.85 0.9 1" contype="1" conaffinity="1"/>
-      <geom name="biology_incubator_37_door" type="box" pos="-0.31 0 0.1" size="0.02 0.24 0.3" rgba="0.9 0.9 0.95 1" contype="1" conaffinity="1"/>
+        <geom name="bio_inc_37_main" type="box" pos="0 0 0" size="0.3 0.25 0.4" rgba="0.85 0.85 0.9 1" contype="1" conaffinity="1"/>
+        <geom name="bio_inc_37_door" type="box" pos="-0.31 0 0" size="0.01 0.24 0.38" rgba="0.9 0.9 0.95 1"/>
+        <geom name="bio_inc_37_window" type="box" pos="-0.32 0 0.05" size="0.01 0.15 0.2" rgba="0.2 0.2 0.3 0.3"/>
+        <geom name="bio_inc_37_handle" type="box" pos="-0.33 0.2 0" size="0.02 0.02 0.08" rgba="0.5 0.5 0.5 1"/>
+        <geom name="bio_inc_37_disp" type="box" pos="-0.32 -0.15 0.3" size="0.01 0.06 0.03" rgba="0.1 0.8 0.1 1"/>
     </body>
 
     <!-- CO₂ incubator (5%): 0.7m×0.6m×1.0m next to 37°C incubator along east wall（CO₂培养箱5%：紧邻恒温培养箱，沿东墙摆放） -->
     <body name="biology_incubator_co2_body" pos="7.8 5.2 0.5">
-      <geom name="biology_incubator_co2_main" type="box" pos="0 0 0" size="0.35 0.3 0.5" rgba="0.8 0.85 0.9 1" contype="1" conaffinity="1"/>
-      <geom name="biology_incubator_co2_door" type="box" pos="-0.36 0 0.15" size="0.02 0.28 0.35" rgba="0.9 0.9 0.95 1" contype="1" conaffinity="1"/>
+        <geom name="bio_inc_co2_main" type="box" pos="0 0 0" size="0.35 0.3 0.5" rgba="0.8 0.85 0.9 1" contype="1" conaffinity="1"/>
+        <geom name="bio_inc_co2_door" type="box" pos="-0.36 0 0" size="0.01 0.3 0.48" rgba="0.9 0.9 0.95 1"/>
+        <geom name="bio_inc_co2_glass" type="box" pos="-0.37 0 0.1" size="0.01 0.2 0.25" rgba="0.1 0.1 0.1 0.8"/>
+        <geom name="bio_inc_co2_screen" type="box" pos="-0.37 0 0.4" size="0.01 0.1 0.05" rgba="0.2 0.2 0.8 1"/>
     </body>
 
     <!-- 4°C refrigerator: 0.8m×0.6m×1.8m at left segment of north wall（4℃冷藏冰箱：北侧墙左侧位置） -->
     <body name="biology_fridge_4c_body" pos="2.0 7.7 0.9">
-      <geom name="biology_fridge_4c_main" type="box" pos="0 0 0" size="0.4 0.3 0.9" rgba="0.85 0.9 0.95 1" contype="1" conaffinity="1"/>
-      <geom name="biology_fridge_4c_door" type="box" pos="-0.41 0 0.1" size="0.02 0.28 0.8" rgba="0.9 0.95 1 1" contype="1" conaffinity="1"/>
+        <geom name="bio_fridge_case" type="box" pos="0 0 0" size="0.4 0.3 0.9" rgba="0.85 0.9 0.95 1" contype="1" conaffinity="1"/>
+        <geom name="bio_fridge_door_top" type="box" pos="-0.02 0 0.25" size="0.4 0.3 0.6" rgba="0.9 0.95 1 1"/>
+        <geom name="bio_fridge_door_bottom" type="box" pos="-0.02 0 -0.65" size="0.4 0.3 0.25" rgba="0.9 0.95 1 1"/>
+        <geom name="bio_fridge_handle_1" type="box" pos="-0.42 0.2 0.3" size="0.02 0.02 0.15" rgba="0.7 0.7 0.7 1"/>
+        <geom name="bio_fridge_handle_2" type="box" pos="-0.42 0.2 -0.5" size="0.02 0.02 0.15" rgba="0.7 0.7 0.7 1"/>
     </body>
 
     <!-- -20°C freezer: 0.8m×0.6m×1.8m immediately to the right of 4°C fridge（-20℃低温冰箱：冷藏冰箱右侧，紧邻摆放） -->
     <body name="biology_freezer_minus20_body" pos="3.2 7.7 0.9">
-      <geom name="biology_freezer_minus20_main" type="box" pos="0 0 0" size="0.4 0.3 0.9" rgba="0.8 0.85 0.9 1" contype="1" conaffinity="1"/>
-      <geom name="biology_freezer_minus20_door" type="box" pos="-0.41 0 0.1" size="0.02 0.28 0.8" rgba="0.9 0.95 1 1" contype="1" conaffinity="1"/>
+        <geom name="bio_freezer_20_case" type="box" pos="0 0 0" size="0.4 0.3 0.9" rgba="0.8 0.85 0.9 1" contype="1" conaffinity="1"/>
+        <geom name="bio_freezer_20_door" type="box" pos="-0.41 0 0" size="0.02 0.3 0.9" rgba="0.9 0.95 1 1"/>
+        <geom name="bio_freezer_20_handle" type="box" pos="-0.44 0.25 0.1" size="0.02 0.02 0.2" rgba="0.6 0.6 0.6 1"/>
+        <geom name="bio_freezer_20_disp" type="box" pos="-0.42 0 0.8" size="0.01 0.08 0.04" rgba="0.8 0.2 0.2 1"/>
     </body>
 
     <!-- -80°C ultra-low freezer: 1.0m×0.7m×2.0m near north-east corner of biology lab（-80℃超低温冰箱：北段角落） -->
     <body name="biology_freezer_minus80_body" pos="7.0 7.8 1.0">
-      <geom name="biology_freezer_minus80_main" type="box" pos="0 0 0" size="0.5 0.35 1.0" rgba="0.75 0.8 0.9 1" contype="1" conaffinity="1"/>
-      <geom name="biology_freezer_minus80_door" type="box" pos="-0.51 0 0.2" size="0.02 0.32 0.9" rgba="0.9 0.95 1 1" contype="1" conaffinity="1"/>
+        <geom name="bio_freezer_80_case" type="box" pos="0 0 0" size="0.5 0.35 1.0" rgba="0.75 0.8 0.9 1" contype="1" conaffinity="1"/>
+        <geom name="bio_freezer_80_door" type="box" pos="-0.51 0 0.1" size="0.02 0.35 0.8" rgba="0.9 0.95 1 1"/>
+        <geom name="bio_freezer_80_vent" type="box" pos="-0.51 0 -0.8" size="0.02 0.35 0.15" rgba="0.3 0.3 0.3 1"/>
+        <geom name="bio_freezer_80_handle" type="cylinder" pos="-0.55 0.2 0.2" size="0.03 0.15" rgba="0.6 0.6 0.6 1"/>
+        <geom name="bio_freezer_80_latch" type="box" pos="-0.53 0.2 0.2" size="0.04 0.04 0.08" rgba="0.2 0.2 0.2 1"/>
     </body>
 
     <!-- Biological reagent cabinet with T/H control: 1.2m×0.6m×1.8m at central north wall（带温湿度控制的生物试剂柜：北侧墙中段） -->
     <body name="biology_reagent_cabinet_body" pos="4.5 7.7 0.9">
-      <geom name="biology_reagent_cabinet_main" type="box" pos="0 0 0" size="0.6 0.3 0.9" rgba="0.7 0.6 0.5 1" contype="1" conaffinity="1"/>
-      <geom name="biology_reagent_cabinet_door" type="box" pos="-0.61 0 0.1" size="0.02 0.28 0.8" rgba="0.8 0.7 0.6 1" contype="1" conaffinity="1"/>
+        <geom name="bio_ragent_cab_case" type="box" pos="0 0 0" size="0.6 0.3 0.9" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
+        <!-- Glass Doors -->
+        <geom name="bio_ragent_door_l" type="box" pos="-0.29 -0.32 0" size="0.29 0.02 0.88" rgba="0.6 0.8 1 0.4"/>
+        <geom name="bio_ragent_door_r" type="box" pos="0.29 -0.32 0" size="0.29 0.02 0.88" rgba="0.6 0.8 1 0.4"/>
+        <!-- Shelves inside -->
+        <geom name="bio_ragent_shelf_1" type="box" pos="0 0 -0.4" size="0.58 0.25 0.01" rgba="0.8 0.8 0.8 1"/>
+        <geom name="bio_ragent_shelf_2" type="box" pos="0 0 0" size="0.58 0.25 0.01" rgba="0.8 0.8 0.8 1"/>
+        <geom name="bio_ragent_shelf_3" type="box" pos="0 0 0.4" size="0.58 0.25 0.01" rgba="0.8 0.8 0.8 1"/>
+        <!-- Control Unit -->
+        <geom name="bio_ragent_control" type="box" pos="0 -0.32 0.8" size="0.15 0.03 0.08" rgba="0.2 0.2 0.2 1"/>
     </body>
 
     <!-- Multi-layer sample storage rack: 1.0m×0.4m×1.8m at right segment of north wall（样品存储架：北侧墙右侧位置） -->
     <body name="biology_sample_rack_body" pos="5.8 7.6 0.9">
-      <geom name="biology_sample_rack_frame" type="box" pos="0 0 0" size="0.5 0.2 0.9" rgba="0.75 0.75 0.75 1" contype="1" conaffinity="1"/>
-      <geom name="biology_sample_rack_shelf_1" type="box" pos="0 0 -0.3" size="0.51 0.21 0.02" rgba="0.85 0.85 0.85 1" contype="1" conaffinity="1"/>
-      <geom name="biology_sample_rack_shelf_2" type="box" pos="0 0 0" size="0.51 0.21 0.02" rgba="0.85 0.85 0.85 1" contype="1" conaffinity="1"/>
-      <geom name="biology_sample_rack_shelf_3" type="box" pos="0 0 0.3" size="0.51 0.21 0.02" rgba="0.85 0.85 0.85 1" contype="1" conaffinity="1"/>
+        <geom name="bio_rack_frame_l" type="box" pos="-0.48 0 0" size="0.02 0.2 0.9" rgba="0.6 0.6 0.65 1" contype="1" conaffinity="1"/>
+        <geom name="bio_rack_frame_r" type="box" pos="0.48 0 0" size="0.02 0.2 0.9" rgba="0.6 0.6 0.65 1" contype="1" conaffinity="1"/>
+        <geom name="bio_rack_shelf_1" type="box" pos="0 0 -0.3" size="0.46 0.19 0.01" rgba="0.8 0.8 0.8 1"/>
+        <geom name="bio_rack_shelf_2" type="box" pos="0 0 0" size="0.46 0.19 0.01" rgba="0.8 0.8 0.8 1"/>
+        <geom name="bio_rack_shelf_3" type="box" pos="0 0 0.3" size="0.46 0.19 0.01" rgba="0.8 0.8 0.8 1"/>
+        <geom name="bio_rack_shelf_4" type="box" pos="0 0 0.6" size="0.46 0.19 0.01" rgba="0.8 0.8 0.8 1"/>
+        <!-- Sample Boxes -->
+        <geom name="bio_sample_box_1" type="box" pos="-0.2 0 0.05" size="0.1 0.1 0.04" rgba="0.9 0.9 0.8 1"/>
+        <geom name="bio_sample_box_2" type="box" pos="0.2 0 0.05" size="0.1 0.1 0.04" rgba="0.9 0.9 0.8 1"/>
     </body>
 
     <!-- 30L liquid nitrogen tank: 0.5m×0.5m×1.2m at far east end of north wall, away from heat sources（30L液氮罐：北侧墙最东段，远离热源） -->
     <body name="biology_ln2_tank_body" pos="7.8 7.5 0.6">
-      <geom name="biology_ln2_tank" type="cylinder" pos="0 0 0" size="0.25 0.6" rgba="0.7 0.8 0.9 1" contype="1" conaffinity="1"/>
+        <geom name="bio_ln2_body" type="cylinder" pos="0 0 -0.1" size="0.25 0.5" rgba="0.8 0.85 0.9 1" contype="1" conaffinity="1"/>
+        <geom name="bio_ln2_neck" type="cylinder" pos="0 0 0.45" size="0.1 0.1" rgba="0.5 0.5 0.5 1"/>
+        <geom name="bio_ln2_cap" type="cylinder" pos="0 0 0.55" size="0.12 0.03" rgba="0.2 0.3 0.8 1"/>
+        <geom name="bio_ln2_handle" type="cylinder" pos="0 0.28 0.3" size="0.02 0.1" euler="90 0 0" rgba="0.5 0.5 0.5 1"/>
     </body>
 
     <!-- ========== BIOLOGY LAB: SAMPLE PROCESSING AND DETECTION ZONE - PREPARATION + QUALITATIVE/QUANTITATIVE ANALYSIS（生物实验室：样品处理与检测区-样品前处理+定性定量分析） ========== -->
 
     <!-- Central experiment table (with drawers): 2.0m×1.0m×0.8m, centered, square placement（中央实验台：2.0m×1.0m×0.8m，实验室几何中心，方正摆放） -->
     <body name="biology_central_table_body" pos="4.75 4.0 0.4">
-      <geom name="biology_central_table" type="box" pos="0 0 0" size="1.0 0.5 0.4" rgba="0.4 0.4 0.4 1" contype="1" conaffinity="1"/>
-      <geom name="biology_central_table_top" type="box" pos="0 0 0.42" size="1.01 0.51 0.02" rgba="0.3 0.3 0.3 1" contype="1" conaffinity="1"/>
+        <!-- Granite Top -->
+        <geom name="bio_central_top" type="box" pos="0 0 0.42" size="1.01 0.51 0.02" rgba="0.2 0.2 0.2 1" contype="1" conaffinity="1"/>
+        <!-- Base Cabinets -->
+        <geom name="bio_central_cab_l" type="box" pos="-0.5 0 0" size="0.45 0.45 0.4" rgba="0.9 0.9 0.9 1"/>
+        <geom name="bio_central_cab_r" type="box" pos="0.5 0 0" size="0.45 0.45 0.4" rgba="0.9 0.9 0.9 1"/>
+        <!-- Knee Space Panel -->
+        <geom name="bio_central_mid" type="box" pos="0 0 0.2" size="0.05 0.45 0.2" rgba="0.9 0.9 0.9 1"/>
+        <!-- Drawers (Visual) -->
+        <geom name="bio_central_drawer_l" type="box" pos="-0.5 -0.46 0.3" size="0.4 0.01 0.08" rgba="0.8 0.8 0.8 1"/>
+        <geom name="bio_central_drawer_r" type="box" pos="0.5 -0.46 0.3" size="0.4 0.01 0.08" rgba="0.8 0.8 0.8 1"/>
     </body>
 
     <!-- Large capacity centrifuge (4000rpm): 0.7m×0.6m×0.8m, left side of central table near corridor（大容量离心机：0.7m×0.6m×0.8m，中央台左侧，靠近通道） -->
     <body name="biology_large_centrifuge_body" pos="3.3 4.0 0.4">
-      <geom name="biology_large_centrifuge" type="box" pos="0 0 0" size="0.35 0.3 0.4" rgba="0.5 0.5 0.5 1" contype="1" conaffinity="1"/>
+        <geom name="bio_l_cent_case" type="box" pos="0 0 0" size="0.35 0.3 0.4" rgba="0.8 0.8 0.85 1" contype="1" conaffinity="1"/>
+        <geom name="bio_l_cent_lid" type="box" pos="0 0 0.41" size="0.34 0.29 0.02" rgba="0.6 0.6 0.65 1"/>
+        <geom name="bio_l_cent_ui" type="box" pos="0.2 -0.2 0.42" size="0.1 0.08 0.02" rgba="0.2 0.2 0.2 1"/>
     </body>
 
     <!-- PCR仪 (96孔): 0.5m×0.4m×0.3m, south wall near window left side（PCR仪：0.5m×0.4m×0.3m，南侧墙靠窗区左侧） -->
     <body name="biology_pcr_body" pos="2.4 1.0 0.15">
-      <geom name="biology_pcr_main" type="box" pos="0 0 0" size="0.25 0.2 0.15" rgba="0.3 0.3 0.4 1" contype="1" conaffinity="1"/>
+        <geom name="bio_pcr_base" type="box" pos="0 0 0" size="0.25 0.2 0.1" rgba="0.8 0.8 0.8 1" contype="1" conaffinity="1"/>
+        <geom name="bio_pcr_lid_slope" type="box" pos="0 0 0.1" size="0.2 0.18 0.05" euler="5 0 0" rgba="0.3 0.3 0.35 1"/>
+        <geom name="bio_pcr_screen" type="box" pos="0 -0.15 0.08" size="0.08 0.01 0.04" euler="30 0 0" rgba="0.1 0.1 0.8 1"/>
     </body>
 
     <!-- Gel imaging system: 0.6m×0.5m×0.7m, right side of PCR仪, adjacent placement（凝胶成像系统：0.6m×0.5m×0.7m，PCR仪右侧，紧邻摆放） -->
     <body name="biology_gel_imaging_body" pos="3.3 1.0 0.35">
-      <geom name="biology_gel_imaging_main" type="box" pos="0 0 0" size="0.3 0.25 0.35" rgba="0.4 0.4 0.5 1" contype="1" conaffinity="1"/>
+        <geom name="bio_gel_case" type="box" pos="0 0 0" size="0.3 0.25 0.35" rgba="0.3 0.3 0.3 1" contype="1" conaffinity="1"/>
+        <geom name="bio_gel_door" type="box" pos="0 -0.26 0" size="0.25 0.01 0.3" rgba="0.2 0.2 0.2 1"/>
+        <geom name="bio_gel_cam" type="box" pos="0 0 0.38" size="0.1 0.1 0.05" rgba="0.1 0.1 0.1 1"/>
+        <geom name="bio_gel_screen" type="box" pos="0 -0.25 0.2" size="0.08 0.02 0.06" rgba="0.5 0.8 0.5 1"/>
     </body>
 
     <!-- UV spectrophotometer: 0.5m×0.4m×0.6m, right side of gel imaging system（紫外分光光度计：0.5m×0.4m×0.6m，凝胶成像系统右侧） -->
     <body name="biology_uv_spectro_body" pos="4.2 1.0 0.3">
-      <geom name="biology_uv_spectro_main" type="box" pos="0 0 0" size="0.25 0.2 0.3" rgba="0.4 0.5 0.6 1" contype="1" conaffinity="1"/>
+        <geom name="bio_uv_case" type="box" pos="0 0 0" size="0.25 0.2 0.2" rgba="0.8 0.85 0.9 1" contype="1" conaffinity="1"/>
+        <geom name="bio_uv_sample" type="box" pos="-0.1 0.05 0.1" size="0.1 0.1 0.12" rgba="0.3 0.3 0.4 1"/>
+        <geom name="bio_uv_lid" type="box" pos="-0.1 0.05 0.22" size="0.11 0.11 0.01" rgba="0.3 0.3 0.4 1"/>
+        <geom name="bio_uv_screen" type="box" pos="0.1 -0.1 0.15" size="0.08 0.08 0.05" euler="20 0 0" rgba="0.1 0.1 0.1 1"/>
     </body>
 
     <!-- Ultra-pure water system (10L/h): 0.5m×0.4m×1.0m, end of window area near central table（超纯水机：0.5m×0.4m×1.0m，靠窗区末端，靠近中央台） -->
     <body name="biology_ultrapure_water_body" pos="5.2 2.0 0.5">
-      <geom name="biology_ultrapure_water_main" type="box" pos="0 0 0" size="0.25 0.2 0.5" rgba="0.5 0.55 0.6 1" contype="1" conaffinity="1"/>
+        <geom name="bio_water_case" type="box" pos="0 0 0" size="0.25 0.2 0.5" rgba="0.9 0.9 0.95 1" contype="1" conaffinity="1"/>
+        <geom name="bio_water_tank" type="cylinder" pos="0 0.22 -0.2" size="0.15 0.3" rgba="0.8 0.85 0.9 1" contype="1" conaffinity="1"/>
+        <geom name="bio_water_disp" type="capsule" pos="-0.1 -0.2 0.2" euler="45 0 0" size="0.02 0.1" rgba="0.6 0.6 0.6 1"/>
+        <geom name="bio_water_screen" type="box" pos="0 -0.21 0.3" size="0.1 0.01 0.06" rgba="0.1 0.1 0.8 1"/>
     </body>
 
     <!-- Ultrasonic cell disruptor: 0.4m×0.3m×0.5m, right side of central table near water system（超声波细胞破碎仪：0.4m×0.3m×0.5m，中央台右侧，靠近纯水机） -->
-    <body name="biology_ultrasonic_disruptor_body" pos="6.0 3.6 0.25">
-      <geom name="biology_ultrasonic_disruptor_main" type="box" pos="0 0 0" size="0.2 0.15 0.25" rgba="0.5 0.5 0.5 1" contype="1" conaffinity="1"/>
+    <body name="biology_ultrasonic_disruptor_body" pos="5.2 4.0 1.0">
+        <geom name="bio_sonic_gen" type="box" pos="0 0 -0.1" size="0.2 0.15 0.15" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
+        <geom name="bio_sonic_box" type="box" pos="0 0 0.2" size="0.15 0.15 0.25" rgba="0.8 0.8 0.8 0.5"/>
+        <geom name="bio_sonic_probe" type="cylinder" pos="0 0 0.25" size="0.02 0.15" rgba="0.3 0.3 0.3 1"/>
     </body>
 
     <!-- Constant temperature water bath (6孔): 0.5m×0.3m×0.4m, front of central table, middle position（恒温水浴锅：0.5m×0.3m×0.4m，中央台前端，中间位置） -->
-    <body name="biology_water_bath_body" pos="4.75 3.2 0.2">
-      <geom name="biology_water_bath_main" type="box" pos="0 0 0" size="0.25 0.15 0.2" rgba="0.4 0.5 0.5 1" contype="1" conaffinity="1"/>
+    <body name="biology_water_bath_body" pos="4.75 3.8 1.04">
+        <geom name="bio_bath_case" type="box" pos="0 0 0" size="0.25 0.15 0.2" rgba="0.8 0.8 0.8 1" contype="1" conaffinity="1"/>
+        <geom name="bio_bath_water" type="box" pos="0 0 0.15" size="0.22 0.12 0.01" rgba="0.2 0.5 0.9 0.8" contype="0" conaffinity="0"/>
+        <geom name="bio_bath_lid" type="box" pos="0.26 0 0.18" size="0.01 0.15 0.2" euler="0 10 0" rgba="0.7 0.7 0.7 1"/>
+        <geom name="bio_bath_knobs" type="box" pos="-0.26 0 -0.1" size="0.01 0.1 0.05" rgba="0.2 0.2 0.2 1"/>
     </body>
 
     <!-- Magnetic stirrer (multi-station): 0.4m×0.3m×0.2m, back of central table near reagent area（磁力搅拌器：0.4m×0.3m×0.2m，中央台后端，靠近试剂区） -->
-    <body name="biology_magnetic_stirrer_body" pos="4.75 4.8 0.1">
-      <geom name="biology_magnetic_stirrer_main" type="box" pos="0 0 0" size="0.2 0.15 0.1" rgba="0.6 0.6 0.6 1" contype="1" conaffinity="1"/>
+    <body name="biology_magnetic_stirrer_body" pos="4.75 4.3 0.9">
+        <geom name="bio_stirrer_plate" type="box" pos="0 0 0.05" size="0.2 0.15 0.02" rgba="0.9 0.9 0.9 1" contype="1" conaffinity="1"/>
+        <geom name="bio_stirrer_base" type="box" pos="0 0 -0.05" size="0.2 0.15 0.05" rgba="0.3 0.3 0.4 1" contype="1" conaffinity="1"/>
+        <geom name="bio_stirrer_knob" type="cylinder" pos="0.18 0 -0.05" size="0.02 0.01" euler="0 90 0" rgba="0.1 0.1 0.1 1"/>
     </body>
 
     <!-- ========== BIOLOGY LAB: AUXILIARY OPERATION ZONE - CONSUMABLES PREPARATION + WASTE TREATMENT（生物实验室：辅助操作区-耗材准备+废液处理） ========== -->
 
     <!-- Auxiliary side table (segmented): 4.0m×0.6m×0.8m, along south wall with gaps at both ends, hollow underneath（辅助边台：4.0m×0.6m×0.8m，沿南侧墙布置，两端留空隙，下方镂空） -->
     <body name="biology_aux_side_table_body" pos="4.5 0.3 0.4">
-      <!-- Table top（台面） -->
-      <geom name="biology_aux_side_table_top" type="box" pos="0 0 0.62" size="2.01 0.31 0.02" rgba="0.6 0.6 0.6 1" contype="1" conaffinity="1"/>
-      <!-- Table legs（桌腿） -->
-      <geom name="biology_aux_side_table_leg1" type="box" pos="-1.8 0 0.2" size="0.1 0.3 0.4" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
-      <geom name="biology_aux_side_table_leg2" type="box" pos="1.8 0 0.2" size="0.1 0.3 0.4" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
-      <geom name="biology_aux_side_table_leg3" type="box" pos="-1.8 0 0.2" size="0.1 0.3 0.4" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
-      <geom name="biology_aux_side_table_leg4" type="box" pos="1.8 0 0.2" size="0.1 0.3 0.4" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
+        <!-- Table top（台面） -->
+        <geom name="biology_aux_side_table_top" type="box" pos="0 0 0.42" size="2.01 0.31 0.02" rgba="0.6 0.6 0.6 1" contype="1" conaffinity="1"/>
+        <!-- Cabinets (Storage) -->
+        <geom name="bio_aux_cab_1" type="box" pos="-1.5 0 0" size="0.45 0.3 0.4" rgba="0.8 0.8 0.8 1"/>
+        <geom name="bio_aux_cab_2" type="box" pos="0 0 0" size="0.45 0.3 0.4" rgba="0.8 0.8 0.8 1"/>
+        <geom name="bio_aux_cab_3" type="box" pos="1.5 0 0" size="0.45 0.3 0.4" rgba="0.8 0.8 0.8 1"/>
+        <!-- Knee Spaces (Empty for trash bins) -->
     </body>
 
     <!-- Sterile consumables autoclave (small): 0.6m×0.6m×0.8m, south wall left side（无菌耗材灭菌锅：0.6m×0.6m×0.8m，南侧墙左侧） -->
     <body name="biology_autoclave_body" pos="1.8 1.0 0.4">
-      <geom name="biology_autoclave_main" type="box" pos="0 0 0" size="0.3 0.3 0.4" rgba="0.8 0.8 0.8 1" contype="1" conaffinity="1"/>
+        <geom name="bio_ac_case" type="box" pos="0 0 0" size="0.3 0.3 0.4" rgba="0.85 0.85 0.85 1" contype="1" conaffinity="1"/>
+        <geom name="bio_ac_door" type="box" pos="0 -0.31 0" size="0.25 0.01 0.35" rgba="0.7 0.7 0.75 1"/>
+        <geom name="bio_ac_wheel" type="cylinder" pos="0 -0.32 0" size="0.1 0.02" euler="90 0 0" rgba="0.3 0.3 0.3 1"/>
+        <geom name="bio_ac_panel" type="box" pos="0.2 -0.31 0.3" size="0.08 0.01 0.05" rgba="0.2 0.2 0.2 1"/>
     </body>
 
     <!-- Bottle washer (small): 0.5m×0.4m×0.6m, north of autoclave under side table（洗瓶机：0.5m×0.4m×0.6m，灭菌锅北侧，边台下方） -->
     <body name="biology_bottle_washer_body" pos="3.1 0.5 0.3">
-      <geom name="biology_bottle_washer_main" type="box" pos="0 0 0" size="0.25 0.2 0.3" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
+        <geom name="bio_washer_case" type="box" pos="0 0 0" size="0.25 0.2 0.3" rgba="0.9 0.9 0.9 1" contype="1" conaffinity="1"/>
+        <geom name="bio_washer_win" type="box" pos="0 0.21 0.05" size="0.15 0.01 0.15" rgba="0.2 0.3 0.4 0.5"/>
+        <geom name="bio_washer_ui" type="box" pos="0 0.21 0.25" size="0.2 0.01 0.04" rgba="0.1 0.1 0.1 1"/>
     </body>
 
     <!-- Waste liquid collection barrels (2 classified): 0.5m×0.5m×0.6m, middle under side table, sealed with lid（废液收集桶：0.5m×0.5m×0.6m，边台下方中段，带盖密封） -->
     <body name="biology_waste_barrel_1_body" pos="3.75 0.5 0.3">
-      <geom name="biology_waste_barrel_1" type="cylinder" pos="0 0 0" size="0.25 0.3" rgba="0.8 0.2 0.2 1" contype="1" conaffinity="1"/>
-      <geom name="biology_waste_barrel_1_lid" type="cylinder" pos="0 0 0.32" size="0.26 0.05" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
+        <geom name="bio_waste1_body" type="cylinder" pos="0 0 0" size="0.25 0.3" rgba="0.8 0.3 0.3 1" contype="1" conaffinity="1"/>
+        <geom name="bio_waste1_lid" type="cylinder" pos="0 0 0.32" size="0.26 0.05" rgba="0.1 0.1 0.1 1"/>
+        <geom name="bio_waste1_label" type="box" pos="0 0.26 0" size="0.1 0.01 0.1" rgba="1 1 1 1"/>
     </body>
     <body name="biology_waste_barrel_2_body" pos="4.45 0.5 0.3">
-      <geom name="biology_waste_barrel_2" type="cylinder" pos="0 0 0" size="0.25 0.3" rgba="0.2 0.2 0.8 1" contype="1" conaffinity="1"/>
-      <geom name="biology_waste_barrel_2_lid" type="cylinder" pos="0 0 0.32" size="0.26 0.05" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
+        <geom name="bio_waste2_body" type="cylinder" pos="0 0 0" size="0.25 0.3" rgba="0.3 0.3 0.8 1" contype="1" conaffinity="1"/>
+        <geom name="bio_waste2_lid" type="cylinder" pos="0 0 0.32" size="0.26 0.05" rgba="0.1 0.1 0.1 1"/>
+        <geom name="bio_waste2_label" type="box" pos="0 0.26 0" size="0.1 0.01 0.1" rgba="1 1 1 1"/>
     </body>
 
     <!-- Classified trash bins (3): 0.4m×0.4m×0.6m, north under side table near corner（分类垃圾桶：0.4m×0.4m×0.6m，边台下方北段，靠近角落） -->
     <body name="biology_trash_bin_1_body" pos="5.0 0.5 0.3">
-      <geom name="biology_trash_bin_1" type="cylinder" pos="0 0 0" size="0.2 0.3" rgba="0.9 0.1 0.1 1" contype="1" conaffinity="1"/>
+        <geom name="bio_bin1_body" type="box" pos="0 0 0" size="0.2 0.2 0.3" rgba="0.8 0.2 0.2 1" contype="1" conaffinity="1"/>
+        <geom name="bio_bin1_lid" type="box" pos="0 0 0.31" size="0.21 0.21 0.01" euler="15 0 0" rgba="0.7 0.7 0.7 1"/>
     </body>
     <body name="biology_trash_bin_2_body" pos="5.5 0.5 0.3">
-      <geom name="biology_trash_bin_2" type="cylinder" pos="0 0 0" size="0.2 0.3" rgba="0.1 0.9 0.1 1" contype="1" conaffinity="1"/>
+        <geom name="bio_bin2_body" type="box" pos="0 0 0" size="0.2 0.2 0.3" rgba="0.2 0.2 0.8 1" contype="1" conaffinity="1"/>
+        <geom name="bio_bin2_lid" type="box" pos="0 0 0.31" size="0.21 0.21 0.01" euler="15 0 0" rgba="0.7 0.7 0.7 1"/>
     </body>
     <body name="biology_trash_bin_3_body" pos="5.95 0.5 0.3">
-      <geom name="biology_trash_bin_3" type="cylinder" pos="0 0 0" size="0.2 0.3" rgba="0.1 0.1 0.1 1" contype="1" conaffinity="1"/>
+        <geom name="bio_bin3_body" type="box" pos="0 0 0" size="0.2 0.2 0.3" rgba="0.2 0.2 0.2 1" contype="1" conaffinity="1"/>
+        <geom name="bio_bin3_lid" type="box" pos="0 0 0.31" size="0.21 0.21 0.01" euler="15 0 0" rgba="0.7 0.7 0.7 1"/>
     </body>
 
     <!-- Consumables storage cabinet: 1.0m×0.5m×1.8m, south wall above side table（耗材储物柜：1.0m×0.5m×1.8m，南侧墙上方） -->
     <body name="biology_consumables_cabinet_body" pos="2.0 0.3 0.9">
-      <geom name="biology_consumables_cabinet_main" type="box" pos="0 0 0" size="0.5 0.25 0.9" rgba="0.8 0.8 0.7 1" contype="1" conaffinity="1"/>
-      <geom name="biology_consumables_cabinet_door" type="box" pos="0.26 0 0" size="0.02 0.24 0.85" rgba="0.85 0.85 0.75 1" contype="1" conaffinity="1"/>
+        <geom name="bio_cons_cab_frame" type="box" pos="0 0 0" size="0.5 0.25 0.9" rgba="0.9 0.9 0.9 1" contype="1" conaffinity="1"/>
+        <geom name="bio_cons_cab_glass" type="box" pos="0 0.26 0" size="0.45 0.01 0.85" rgba="0.5 0.8 0.9 0.3" contype="0" conaffinity="0"/>
+        <geom name="bio_cons_shelf_1" type="box" pos="0 0 0.3" size="0.48 0.2 0.01" rgba="0.8 0.8 0.8 1"/>
+        <geom name="bio_cons_shelf_2" type="box" pos="0 0 0" size="0.48 0.2 0.01" rgba="0.8 0.8 0.8 1"/>
+        <geom name="bio_cons_shelf_3" type="box" pos="0 0 -0.3" size="0.48 0.2 0.01" rgba="0.8 0.8 0.8 1"/>
     </body>
 
     <!-- ========== BIOLOGY LAB: SAFETY AUXILIARY ZONE - EMERGENCY PROTECTION + ENVIRONMENTAL MONITORING（生物实验室：安全辅助区-应急防护+环境监测） ========== -->
