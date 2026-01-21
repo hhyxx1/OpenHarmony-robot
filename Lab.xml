@@ -65,7 +65,7 @@
     <geom name="physics_wall_east_2" type="box" pos="-1.25 13.85 1.6" size="0.1 4.25 1.6" material="wall_mat" contype="1" conaffinity="1"/>
 
     <!-- Room label marker (visual only, no collision)（房间标记：仅视觉，无碰撞） -->
-    <geom name="physics_marker" type="box" pos="-4.25 9 0.2" size="0.5 0.3 0.05" rgba="0.6 0.7 0.9 1" contype="0" conaffinity="0"/>
+    <geom name="physics_marker" type="box" pos="-4.25 9 0.075" size="0.5 0.3 0.05" rgba="0.6 0.7 0.9 1" contype="0" conaffinity="0"/>
 
     <!-- Physics lab equipment（物理实验室设备） -->
 
@@ -249,10 +249,10 @@
     <geom name="chemistry_wall_south" type="box" pos="4.25 8 1.6" size="3 0.1 1.6" material="chem_wall_tile" contype="1" conaffinity="1"/>
 
     <!-- Chemistry lab core equipment（化学实验室核心设备） -->
-    <!-- Central anti-vibration main experiment table: 4m×1m×0.85m（中央防振主实验台：4m×1m×0.85m） -->
+    <!-- Main experiment table: 4m×1m×0.85m, lowered to sit on floor (Z=0.3 body pos)（主要实验台：4m×1m×0.85m，降低以贴合地面） -->
     
     <!-- Main table body with damping layer（主台桌体：防振缓冲层） -->
-    <body name="chemistry_main_table_body" pos="4.25 13 0.425">
+    <body name="chemistry_main_table_body" pos="4.25 13 0.3">
         <!-- Table Top (Granite) -->
         <geom name="chemistry_table_top" type="box" pos="0 0 0.425" size="0.51 2.01 0.025" material="granite_mat" contype="1" conaffinity="1"/>
         <!-- Frame/Cabinet Base -->
@@ -269,13 +269,13 @@
     </body>
 
     <!-- Organic synthesis zone marker - left half（有机合成区标记-左半部分） -->
-    <geom name="organic_zone_marker" type="box" pos="4.25 11.5 0.86" size="0.5 1 0.02" material="organic_zone_mat" contype="0" conaffinity="0"/>
+    <geom name="organic_zone_marker" type="box" pos="4.25 11.5 0.735" size="0.5 1 0.02" material="organic_zone_mat" contype="0" conaffinity="0"/>
     
     <!-- Inorganic analysis zone marker - right half（无机分析区标记-右半部分） -->
-    <geom name="inorganic_zone_marker" type="box" pos="4.25 14.5 0.86" size="0.5 1 0.02" material="inorganic_zone_mat" contype="0" conaffinity="0"/>
+    <geom name="inorganic_zone_marker" type="box" pos="4.25 14.5 0.735" size="0.5 1 0.02" material="inorganic_zone_mat" contype="0" conaffinity="0"/>
 
     <!-- Embedded acid-alkali resistant sink at center: 0.5m×0.4m×0.3m（中心内嵌防酸碱水槽：0.5m×0.4m×0.3m） -->
-    <body name="chemistry_sink_body" pos="4.25 13 0.425">
+    <body name="chemistry_sink_body" pos="4.25 13 0.3">
         <geom name="chemistry_sink" type="box" pos="0 0 0.15" size="0.25 0.2 0.15" material="sink_mat" contype="1" conaffinity="1"/>
         <geom name="chemistry_sink_rim" type="box" pos="0 0 0.32" size="0.26 0.21 0.01" rgba="0.5 0.5 0.5 1" contype="1" conaffinity="1"/>
         <!-- Faucet -->
@@ -287,18 +287,18 @@
 
     <!-- Anti-splash stabilized power outlets (one every 0.8m)（防溅水稳定电源：每0.8m一个） -->
     <!-- Left side outlets（左侧插座） -->
-    <geom name="chemistry_outlet_1" type="box" pos="4.0 11 0.4" size="0.04 0.1 0.08" rgba="0.8 0.8 0.8 1" contype="0" conaffinity="0"/>
-    <geom name="chemistry_outlet_2" type="box" pos="4.0 11.8 0.4" size="0.04 0.1 0.08" rgba="0.8 0.8 0.8 1" contype="0" conaffinity="0"/>
-    <geom name="chemistry_outlet_3" type="box" pos="4.0 12.6 0.4" size="0.04 0.1 0.08" rgba="0.8 0.8 0.8 1" contype="0" conaffinity="0"/>
+    <geom name="chemistry_outlet_1" type="box" pos="4.0 11 0.275" size="0.04 0.1 0.08" rgba="0.8 0.8 0.8 1" contype="0" conaffinity="0"/>
+    <geom name="chemistry_outlet_2" type="box" pos="4.0 11.8 0.275" size="0.04 0.1 0.08" rgba="0.8 0.8 0.8 1" contype="0" conaffinity="0"/>
+    <geom name="chemistry_outlet_3" type="box" pos="4.0 12.6 0.275" size="0.04 0.1 0.08" rgba="0.8 0.8 0.8 1" contype="0" conaffinity="0"/>
     
     <!-- Right side outlets（右侧插座） -->
-    <geom name="chemistry_outlet_4" type="box" pos="4.5 13.4 0.4" size="0.04 0.1 0.08" rgba="0.8 0.8 0.8 1" contype="0" conaffinity="0"/>
-    <geom name="chemistry_outlet_5" type="box" pos="4.5 14.2 0.4" size="0.04 0.1 0.08" rgba="0.8 0.8 0.8 1" contype="0" conaffinity="0"/>
-    <geom name="chemistry_outlet_6" type="box" pos="4.5 15 0.4" size="0.04 0.1 0.08" rgba="0.8 0.8 0.8 1" contype="0" conaffinity="0"/>
+    <geom name="chemistry_outlet_4" type="box" pos="4.5 13.4 0.275" size="0.04 0.1 0.08" rgba="0.8 0.8 0.8 1" contype="0" conaffinity="0"/>
+    <geom name="chemistry_outlet_5" type="box" pos="4.5 14.2 0.275" size="0.04 0.1 0.08" rgba="0.8 0.8 0.8 1" contype="0" conaffinity="0"/>
+    <geom name="chemistry_outlet_6" type="box" pos="4.5 15 0.275" size="0.04 0.1 0.08" rgba="0.8 0.8 0.8 1" contype="0" conaffinity="0"/>
 
     <!-- Instrument area equipment（仪器区设备） -->
     <!-- High-performance liquid chromatograph - 1m spacing from prep table（高效液相色谱仪：与前处理台相距1m） -->
-    <body name="hplc_body" pos="4.25 11.5 0.925">
+    <body name="hplc_body" pos="4.25 11.5 0.8">
         <freejoint/>
         <!-- Stack: Pump, Autosampler, Column Oven, Detector -->
         <geom name="hplc_base_unit" type="box" pos="0 0 0" size="0.25 0.3 0.05" rgba="0.8 0.8 0.9 1"/>
@@ -313,7 +313,7 @@
     </body>
 
     <!-- UV-Vis spectrophotometer - 3m spacing from HPLC（紫外分光光度计：与色谱仪相距3m） -->
-    <body name="uvvis_body" pos="4.25 14.5 1.025">
+    <body name="uvvis_body" pos="4.25 14.5 0.9">
         <freejoint/>
         <!-- Main Body -->
         <geom name="uvvis_case" type="box" pos="0 0 0" size="0.22 0.28 0.15" rgba="0.9 0.9 0.95 1" contype="1" conaffinity="1"/>
@@ -486,7 +486,7 @@
     </body>
 
     <!-- Room label marker（房间标记） -->
-    <geom name="chemistry_marker" type="box" pos="4.25 13 0.2" size="0.5 0.3 0.05" rgba="0.9 0.7 0.6 1" contype="0" conaffinity="0"/>
+    <geom name="chemistry_marker" type="box" pos="4.25 13 0.075" size="0.5 0.3 0.05" rgba="0.9 0.7 0.6 1" contype="0" conaffinity="0"/>
 
     <!-- Ventilation and protection equipment（通风与防护设备） -->
     <!-- Fume hood 1: Strong VOC exhaust（有机挥发通风橱） - outside north wall（北墙外侧） -->
@@ -689,7 +689,7 @@
     <geom name="biology_wall_north" type="box" pos="4.75 8 1.6" size="3.5 0.1 1.6" material="wall_mat" contype="1" conaffinity="1"/>
 
     <!-- Room label marker（房间标记） -->
-    <geom name="biology_marker" type="box" pos="4.75 4 0.2" size="0.5 0.3 0.05" rgba="0.7 0.9 0.7 1" contype="0" conaffinity="0"/>
+    <geom name="biology_marker" type="box" pos="4.75 4 0.075" size="0.5 0.3 0.05" rgba="0.7 0.9 0.7 1" contype="0" conaffinity="0"/>
 
     <!-- ========== BIOLOGY LAB: ENTRY TRANSITION ZONE - CLEANING & ISOLATION（生物实验室：入口过渡区-清洁防护+污染隔离） ========== -->
 
@@ -740,14 +740,14 @@
     </body>
 
     <!-- Compact cell counter: 0.3m×0.3m×0.4m at center of auxiliary table（小型细胞计数仪：辅助台中间位置） -->
-    <body name="biology_cell_counter_body" pos="6.0 2.0 0.84">
+    <body name="biology_cell_counter_body" pos="6.0 2.0 1.04">
         <geom name="bio_counter_body" type="box" pos="0 0 0" size="0.15 0.15 0.2" rgba="0.3 0.3 0.4 1" contype="1" conaffinity="1"/>
         <geom name="bio_counter_screen" type="box" pos="-0.15 0 0.05" size="0.01 0.12 0.08" euler="0 -20 0" rgba="0.1 0.1 0.1 1"/>
         <geom name="bio_counter_slot" type="box" pos="-0.12 0 -0.1" size="0.05 0.08 0.01" rgba="0.2 0.2 0.2 1"/>
     </body>
 
     <!-- Benchtop low-speed centrifuge: 0.4m×0.4m×0.5m at auxiliary table end near BSC（台式低速离心机：辅助台末端靠近生物安全柜） -->
-    <body name="biology_aux_centrifuge_body" pos="6.0 2.5 1.1">
+    <body name="biology_aux_centrifuge_body" pos="6.0 2.5 0.99">
         <geom name="bio_bench_cent_body" type="box" pos="0 0 0" size="0.2 0.2 0.15" rgba="0.5 0.5 0.55 1" contype="1" conaffinity="1"/>
         <geom name="bio_bench_cent_lid" type="cylinder" pos="0 0 0.15" size="0.18 0.05" rgba="0.6 0.6 0.65 1"/>
         <geom name="bio_bench_cent_panel" type="box" pos="-0.2 0 0" size="0.02 0.15 0.05" euler="0 -30 0" rgba="0.2 0.2 0.2 1"/>
@@ -888,7 +888,7 @@
     </body>
 
     <!-- Ultrasonic cell disruptor: 0.4m×0.3m×0.7m, right side of central table near water system（超声波细胞破碎仪：0.4m×0.3m×0.7m，中央台右侧，靠近纯水机） -->
-    <body name="biology_ultrasonic_disruptor_body" pos="5.2 4.0 1.0">
+    <body name="biology_ultrasonic_disruptor_body" pos="5.2 4.0 1.09">
         <geom name="bio_sonic_gen" type="box" pos="0 0 -0.1" size="0.2 0.15 0.15" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1"/>
         <geom name="bio_sonic_box" type="box" pos="0 0 0.2" size="0.15 0.15 0.25" rgba="0.8 0.8 0.8 0.5"/>
         <geom name="bio_sonic_probe" type="cylinder" pos="0 0 0.25" size="0.02 0.15" rgba="0.3 0.3 0.3 1"/>
@@ -903,7 +903,7 @@
     </body>
 
     <!-- Magnetic stirrer (multi-station): 0.4m×0.3m×0.2m, back of central table near reagent area（磁力搅拌器：0.4m×0.3m×0.2m，中央台后端，靠近试剂区） -->
-    <body name="biology_magnetic_stirrer_body" pos="4.75 4.3 0.9">
+    <body name="biology_magnetic_stirrer_body" pos="4.75 4.3 0.94">
         <geom name="bio_stirrer_plate" type="box" pos="0 0 0.05" size="0.2 0.15 0.02" rgba="0.9 0.9 0.9 1" contype="1" conaffinity="1"/>
         <geom name="bio_stirrer_base" type="box" pos="0 0 -0.05" size="0.2 0.15 0.05" rgba="0.3 0.3 0.4 1" contype="1" conaffinity="1"/>
         <geom name="bio_stirrer_knob" type="cylinder" pos="0.18 0 -0.05" size="0.02 0.01" euler="0 90 0" rgba="0.1 0.1 0.1 1"/>
@@ -911,14 +911,14 @@
 
     <!-- ========== BIOLOGY LAB: AUXILIARY OPERATION ZONE - CONSUMABLES PREPARATION + WASTE TREATMENT（生物实验室：辅助操作区-耗材准备+废液处理） ========== -->
 
-    <!-- Auxiliary side table (segmented): 4.0m×0.6m×0.8m, along south wall with gaps at both ends, hollow underneath（辅助边台：4.0m×0.6m×0.8m，沿南侧墙布置，两端留空隙，下方镂空） -->
+    <!-- Auxiliary side table (segmented): 6.0m×0.6m×0.8m, along south wall with gaps at both ends, hollow underneath（辅助边台：6.0m×0.6m×0.8m，沿南侧墙布置，两端留空隙，下方镂空） -->
     <body name="biology_aux_side_table_body" pos="4.5 0.3 0.4">
         <!-- Table top（台面） -->
-        <geom name="biology_aux_side_table_top" type="box" pos="0 0 0.42" size="2.01 0.31 0.02" rgba="0.6 0.6 0.6 1" contype="1" conaffinity="1"/>
+        <geom name="biology_aux_side_table_top" type="box" pos="0 0 0.42" size="3.01 0.31 0.02" rgba="0.6 0.6 0.6 1" contype="1" conaffinity="1"/>
         <!-- Cabinets (Storage) -->
-        <geom name="bio_aux_cab_1" type="box" pos="-1.5 0 0" size="0.45 0.3 0.4" rgba="0.8 0.8 0.8 1"/>
-        <geom name="bio_aux_cab_2" type="box" pos="0 0 0" size="0.45 0.3 0.4" rgba="0.8 0.8 0.8 1"/>
-        <geom name="bio_aux_cab_3" type="box" pos="1.5 0 0" size="0.45 0.3 0.4" rgba="0.8 0.8 0.8 1"/>
+        <geom name="bio_aux_cab_1" type="box" pos="-2.5 0 0" size="0.45 0.3 0.4" rgba="0.8 0.8 0.8 1"/>
+        <!-- <geom name="bio_aux_cab_2" type="box" pos="0 0 0" size="0.45 0.3 0.4" rgba="0.8 0.8 0.8 1"/> -->
+        <geom name="bio_aux_cab_3" type="box" pos="2.5 0 0" size="0.45 0.3 0.4" rgba="0.8 0.8 0.8 1"/>
         <!-- Knee Spaces (Empty for trash bins) -->
     </body>
 
@@ -963,8 +963,8 @@
         <geom name="bio_bin3_lid" type="box" pos="0 0 0.31" size="0.21 0.21 0.01" euler="15 0 0" rgba="0.7 0.7 0.7 1"/>
     </body>
 
-    <!-- Consumables storage cabinet: 1.0m×0.5m×1.8m, south wall above side table（耗材储物柜：1.0m×0.5m×1.8m，南侧墙上方） -->
-    <body name="biology_consumables_cabinet_body" pos="2.0 0.3 0.9">
+    <!-- Consumables storage cabinet: 1.0m×0.5m×1.8m, moved to west wall to avoid collision（耗材储物柜：移至西侧墙，灭菌锅与洗手池之间） -->
+    <body name="biology_consumables_cabinet_body" pos="1.5 2.0 0.9" euler="0 0 -90">
         <geom name="bio_cons_cab_frame" type="box" pos="0 0 0" size="0.5 0.25 0.9" rgba="0.9 0.9 0.9 1" contype="1" conaffinity="1"/>
         <geom name="bio_cons_cab_glass" type="box" pos="0 0.26 0" size="0.45 0.01 0.85" rgba="0.5 0.8 0.9 0.3" contype="0" conaffinity="0"/>
         <geom name="bio_cons_shelf_1" type="box" pos="0 0 0.3" size="0.48 0.2 0.01" rgba="0.8 0.8 0.8 1"/>
