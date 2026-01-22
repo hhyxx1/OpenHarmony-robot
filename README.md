@@ -109,9 +109,32 @@
    - 温湿度计：0.15m×0.1m×0.05m
    - 紫外线消毒灯：1.2m×0.1m×0.05m
 
+## 机器人模型 (Robot Models)
+
+本项目集成了来自 [Google DeepMind MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie) 的高质量机器人模型。
+
+### 1. 机械臂 (Manipulators)
+- **型号**：Universal Robots UR10e + Robotiq 2F-85 Gripper
+- **分布**：
+  - 物理实验室 (Physics Lab): 2台
+  - 化学实验室 (Chemistry Lab): 2台
+  - 生物实验室 (Biology Lab): 1台
+- **用途**：可以进行精细的实验操作，如抓取仪器、操作开关、搬运样品等。
+
+### 2. 移动机器人 (Mobile Robot)
+- **型号**：Stanford TidyBot (Mobile Base)
+- **位置**：中央走廊 (Central Corridor)
+- **用途**：作为移动载具，用于在不同实验室之间运送物品。
+- **配置**：仅使用了TidyBot的全向移动底盘 (Holonomic Base)，去除了原有的机械臂部分，专注于物流运输任务。
+
 ## 文件结构
 
 ```
+├── assets/
+│   ├── robotiq_2f85/  # Robotiq 2F-85 夹爪模型
+│   ├── stanford_tidybot/# Stanford TidyBot 移动机器人模型
+│   └── ur10e/         # UR10e 机械臂模型
+├── Screenshots/       # 项目截图
 ├── Lab.xml            # 主实验室环境配置文件
 └── README.md          # 项目说明文件
 ```
