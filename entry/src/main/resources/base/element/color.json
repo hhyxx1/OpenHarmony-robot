@@ -1,0 +1,88 @@
+{
+  "color": [
+    {
+      "name": "start_window_background",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "primary_blue",
+      "value": "#007DFF"
+    },
+    {
+      "name": "success_green",
+      "value": "#00C48C"
+    },
+    {
+      "name": "error_red",
+      "value": "#FF6B6B"
+    },
+    {
+      "name": "neutral_white",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "neutral_gray_light",
+      "value": "#F5F5F5"
+    },
+    {
+      "name": "neutral_gray",
+      "value": "#999999"
+    },
+    {
+      "name": "neutral_dark_gray",
+      "value": "#333333"
+    },
+    {
+      "name": "status_stop",
+      "value": "#999999"
+    },
+    {
+      "name": "status_running",
+      "value": "#00C48C"
+    },
+    {
+      "name": "status_standby",
+      "value": "#007DFF"
+    },
+    {
+      "name": "background_page",
+      "value": "#F5F5F5"
+    },
+    {
+      "name": "background_card",
+      "value": "#FFFFFF"
+    },
+    {
+      "name": "text_primary",
+      "value": "#333333"
+    },
+    {
+      "name": "text_secondary",
+      "value": "#666666"
+    },
+    {
+      "name": "text_hint",
+      "value": "#999999"
+    },
+    {
+      "name": "border_color",
+      "value": "#E0E0E0"
+    },
+    {
+      "name": "divider_color",
+      "value": "#EEEEEE"
+    },
+    {
+      "name": "log_manual",
+      "value": "#333333"
+    },
+    {
+      "name": "log_voice",
+      "value": "#007DFF"
+    },
+    {
+      "name": "log_system",
+      "value": "#999999"
+    }
+  ]
+}
