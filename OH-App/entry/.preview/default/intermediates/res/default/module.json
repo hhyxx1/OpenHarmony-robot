@@ -1,0 +1,113 @@
+{
+	"app":	{
+		"bundleName":	"com.dudh.roboctrl",
+		"vendor":	"example",
+		"versionCode":	1000000,
+		"versionName":	"1.0.0",
+		"icon":	"$media:layered_image",
+		"label":	"$string:app_name",
+		"apiReleaseType":	"Release",
+		"compileSdkVersion":	"6.0.1.112",
+		"targetAPIVersion":	60001021,
+		"minAPIVersion":	60000020,
+		"compileSdkType":	"HarmonyOS",
+		"targetMinorAPIVersion":	0,
+		"targetPatchAPIVersion":	0,
+		"appEnvironments":	[],
+		"bundleType":	"app",
+		"buildMode":	"debug",
+		"debug":	true,
+		"iconId":	16777217,
+		"labelId":	16777219,
+		"iconId":	16777217,
+		"labelId":	16777219
+	},
+	"module":	{
+		"name":	"entry",
+		"type":	"entry",
+		"description":	"$string:module_desc",
+		"mainElement":	"EntryAbility",
+		"deviceTypes":	["phone"],
+		"deliveryWithInstall":	true,
+		"installationFree":	false,
+		"pages":	"$profile:main_pages",
+		"requestPermissions":	[{
+				"name":	"ohos.permission.INTERNET",
+				"reason":	"$string:internet_permission_reason",
+				"usedScene":	{
+					"abilities":	["EntryAbility"],
+					"when":	"always"
+				},
+				"reasonId":	16777275,
+				"reasonId":	16777275
+			}, {
+				"name":	"ohos.permission.GET_NETWORK_INFO",
+				"reason":	"$string:network_permission_reason",
+				"usedScene":	{
+					"abilities":	["EntryAbility"],
+					"when":	"always"
+				},
+				"reasonId":	16777287,
+				"reasonId":	16777287
+			}, {
+				"name":	"ohos.permission.MICROPHONE",
+				"reason":	"$string:microphone_permission_reason",
+				"usedScene":	{
+					"abilities":	["EntryAbility"],
+					"when":	"inuse"
+				},
+				"reasonId":	16777282,
+				"reasonId":	16777282
+			}],
+		"abilities":	[{
+				"name":	"EntryAbility",
+				"srcEntry":	"./ets/entryability/EntryAbility.ets",
+				"description":	"$string:EntryAbility_desc",
+				"icon":	"$media:layered_image",
+				"label":	"$string:EntryAbility_label",
+				"startWindowIcon":	"$media:startIcon",
+				"startWindowBackground":	"$color:start_window_background",
+				"exported":	true,
+				"skills":	[{
+						"entities":	["entity.system.home"],
+						"actions":	["ohos.want.action.home"]
+					}],
+				"descriptionId":	16777260,
+				"iconId":	16777217,
+				"labelId":	16777261,
+				"startWindowIconId":	16777243,
+				"startWindowBackgroundId":	16777234,
+				"ohmurl":	"@normalized:N&&&entry/src/main/ets/entryability/EntryAbility&",
+				"descriptionId":	16777260,
+				"iconId":	16777217,
+				"labelId":	16777261,
+				"startWindowIconId":	16777243,
+				"startWindowBackgroundId":	16777234
+			}, {
+				"name":	"FakeUIAbility",
+				"srcEntry":	"../../.preview/fakeuiability/FakeUIAbility.ets",
+				"startWindowIcon":	"startIcon",
+				"startWindowBackground":	"#FFFFFF",
+				"ohmurl":	"@normalized:N&&&entry/.preview/fakeuiability/FakeUIAbility&"
+			}],
+		"extensionAbilities":	[{
+				"name":	"EntryBackupAbility",
+				"srcEntry":	"./ets/entrybackupability/EntryBackupAbility.ets",
+				"type":	"backup",
+				"exported":	false,
+				"metadata":	[{
+						"name":	"ohos.extension.backup",
+						"resource":	"$profile:backup_config",
+						"resourceId":	16777220,
+						"resourceId":	16777220
+					}],
+				"ohmurl":	"@normalized:N&&&entry/src/main/ets/entrybackupability/EntryBackupAbility&"
+			}],
+		"packageName":	"entry",
+		"virtualMachine":	"ark13.0.1.0",
+		"compileMode":	"esmodule",
+		"dependencies":	[],
+		"descriptionId":	16777283,
+		"descriptionId":	16777283
+	}
+}

@@ -1,0 +1,260 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "Stanford Tidybot Robot Control App"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "Stanford Tidybot Robot Control and Monitor"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "Tidybot Control"
+    },
+    {
+      "name": "internet_permission_reason",
+      "value": "需要网络权限以连接Mujoco仿真环境"
+    },
+    {
+      "name": "network_permission_reason",
+      "value": "需要网络信息权限以获取本地网络状态"
+    },
+    {
+      "name": "microphone_permission_reason",
+      "value": "需要麦克风权限以使用语音控制功能"
+    },
+    {
+      "name": "app_title",
+      "value": "tidybot 仿真控制"
+    },
+    {
+      "name": "monitor_title",
+      "value": "实时监控"
+    },
+    {
+      "name": "log_title",
+      "value": "操作日志"
+    },
+    {
+      "name": "control_title",
+      "value": "控制操作"
+    },
+    {
+      "name": "refresh",
+      "value": "刷新"
+    },
+    {
+      "name": "loading",
+      "value": "正在获取仿真数据..."
+    },
+    {
+      "name": "no_data",
+      "value": "暂无监控数据，请启动仿真"
+    },
+    {
+      "name": "connected",
+      "value": "仿真已连接"
+    },
+    {
+      "name": "connect_failed",
+      "value": "仿真环境连接失败，请检查仿真服务是否启动"
+    },
+    {
+      "name": "reconnect",
+      "value": "重新连接"
+    },
+    {
+      "name": "move_forward",
+      "value": "前进"
+    },
+    {
+      "name": "move_back",
+      "value": "后退"
+    },
+    {
+      "name": "turn_left",
+      "value": "左转"
+    },
+    {
+      "name": "turn_right",
+      "value": "右转"
+    },
+    {
+      "name": "grab",
+      "value": "抓取"
+    },
+    {
+      "name": "release",
+      "value": "释放"
+    },
+    {
+      "name": "start_sim",
+      "value": "启动仿真"
+    },
+    {
+      "name": "pause_sim",
+      "value": "暂停仿真"
+    },
+    {
+      "name": "stop_sim",
+      "value": "停止仿真"
+    },
+    {
+      "name": "voice_wake",
+      "value": "语音唤醒"
+    },
+    {
+      "name": "voice_activated",
+      "value": "麦克风已激活"
+    },
+    {
+      "name": "voice_recognize",
+      "value": "语音识别"
+    },
+    {
+      "name": "voice_success",
+      "value": "语音识别成功"
+    },
+    {
+      "name": "voice_failed",
+      "value": "语音识别失败，请重试"
+    },
+    {
+      "name": "retry",
+      "value": "重试"
+    },
+    {
+      "name": "retry_recognize",
+      "value": "重新识别"
+    },
+    {
+      "name": "cmd_success",
+      "value": "指令执行完成"
+    },
+    {
+      "name": "cmd_failed",
+      "value": "指令执行失败，请重试"
+    },
+    {
+      "name": "resend",
+      "value": "重新发送"
+    },
+    {
+      "name": "timeout",
+      "value": "请求超时，请检查仿真服务状态并重试"
+    },
+    {
+      "name": "invalid_cmd",
+      "value": "指令无效：仿真未启动"
+    },
+    {
+      "name": "no_microphone_permission",
+      "value": "请开启麦克风权限以使用语音控制"
+    },
+    {
+      "name": "no_voice_input",
+      "value": "未检测到语音，请重试"
+    },
+    {
+      "name": "robot_abnormal",
+      "value": "机器人状态异常，请停止操作"
+    },
+    {
+      "name": "data_abnormal",
+      "value": "数据异常，请刷新"
+    },
+    {
+      "name": "log_top",
+      "value": "已到日志顶部"
+    },
+    {
+      "name": "copy",
+      "value": "复制"
+    },
+    {
+      "name": "joint_angle",
+      "value": "关节角度"
+    },
+    {
+      "name": "joint_speed",
+      "value": "关节转速"
+    },
+    {
+      "name": "end_effector",
+      "value": "末端执行器"
+    },
+    {
+      "name": "posture",
+      "value": "机器人姿态"
+    },
+    {
+      "name": "fps",
+      "value": "仿真帧率"
+    },
+    {
+      "name": "robot_status",
+      "value": "机器人状态"
+    },
+    {
+      "name": "status_stop",
+      "value": "停止"
+    },
+    {
+      "name": "status_running",
+      "value": "运动"
+    },
+    {
+      "name": "status_standby",
+      "value": "待机"
+    },
+    {
+      "name": "sim_time",
+      "value": "仿真时间"
+    },
+    {
+      "name": "sim_status",
+      "value": "仿真状态"
+    },
+    {
+      "name": "sim_started",
+      "value": "已启动"
+    },
+    {
+      "name": "sim_paused",
+      "value": "已暂停"
+    },
+    {
+      "name": "sim_stopped",
+      "value": "已停止"
+    },
+    {
+      "name": "param_speed",
+      "value": "转速"
+    },
+    {
+      "name": "param_force",
+      "value": "抓取力度"
+    },
+    {
+      "name": "param_invalid",
+      "value": "请输入有效数值"
+    },
+    {
+      "name": "param_out_of_range",
+      "value": "数值超出合理范围"
+    },
+    {
+      "name": "voice_preview",
+      "value": "语音指令预览"
+    },
+    {
+      "name": "confirm",
+      "value": "确认发送"
+    },
+    {
+      "name": "cancel",
+      "value": "取消"
+    }
+  ]
+}
